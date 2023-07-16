@@ -1,0 +1,61 @@
+<main>
+  <!-- Start Add Photo Section -->
+  <div class="createPage">
+    <h2>Add photo</h2>
+    <!-- Start Add Photo Form -->
+    <form #form="ngForm" (ngSubmit)="createPost(form)">
+      <p>
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          ngModel
+          #inputName="ngModel"
+        />
+      </p>
+
+      <p>
+        <input
+          type="number"
+          name="age"
+          placeholder="Age"
+          #inputAge="ngModel"
+          ngModel
+        />
+      </p>
+
+      <p>
+        <textarea
+          type="text"
+          name="description"
+          placeholder="Description"
+          ngModel
+          #inputDescription="ngModel"
+          
+        ></textarea>
+      </p>
+
+      <p>
+        <input
+          type="text"
+          name="location"
+          placeholder="Location"
+          ngModel
+          #inputLocation="ngModel"
+        />
+      </p>
+
+      <p>
+        <input
+          type="text"
+          name="img"
+          placeholder="Link to image"
+          #inputImg="ngModel"
+          ngModel
+        />
+      </p>
+      <!-- Add Photo Button -->
+      <button class="add-btn">Add Photo</button>
+    </form>
+  </div>
+</main>

@@ -1,0 +1,170 @@
+
+.createPage {
+    margin-top: 130px;
+}
+
+.createPage {
+	display: block;
+    margin: 100px auto;
+	background-color: rgb(255, 255, 255);
+	border: 1px solid rgb(156, 152, 152);
+	padding: 40px;
+	margin-bottom: 15px;
+	border-radius: 3px;
+	border: 1px solid;
+	box-shadow: 1px 2px 3px #888888;
+	width: 400px;
+  
+}
+
+.createPage h2 {
+	text-align: center;
+	margin-top: -10px;
+	text-shadow: 1px 1px rgb(65, 63, 63);
+}
+
+.createPage label {
+	display: none;
+}
+
+.createPage input {
+	background-color: rgb(240, 230, 230);
+	border: 0.1px solid rgb(186, 184, 184);
+	border-radius: 3px;
+	height: 30px;
+	padding-left: 2px;
+	margin-top: 30px;
+	width: 320px;
+	font-size: 16px;
+}
+
+.createPage textarea {
+	background-color: rgb(240, 230, 230);
+	border: 0.1px solid rgb(186, 184, 184);
+	border-radius: 3px;
+	height: 100px;
+	padding-left: 2px;
+	margin-top: 30px;
+	width: 320px;
+	font-size: 16px;
+	resize: none;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+.createPage button {
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+	border: none;
+	width: 100%;
+	border-radius: 3px;
+	margin-top: 30px;
+	height: 30px;
+    box-shadow: 2px 3px #888888;
+    cursor: pointer;
+}
+
+.createPage a {
+	color: white;
+}
+
+.createPage label {
+	display: initial !important;
+	margin-top: 12px;
+	margin-right: 5px;
+	white-space: nowrap;
+}
+
+.add-btn {
+	background-color: rgb(67, 185, 12);
+}
+
+.edit-delete button:hover {
+    box-shadow: none;
+}
+
+/* new-theme
+
+.new-theme-border {
+    border: 1px solid;
+    border-radius: 1em;
+    width: 80%;
+    margin: auto;
+    margin-top: 2em;
+    padding: 1em;
+}
+
+.new-theme-border .input {
+    margin-bottom: 1em;
+}
+
+.header-background {
+    background-color: #4ebced;
+    border: 1px solid #4ebced;
+    padding: 1.5em;
+    padding-bottom: 0;
+    margin-bottom: 1em;
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+}
+
+.header-background span {
+    background-color: #fff;
+    padding: 0.5em;
+    margin-top: 1em;
+    border-radius: 0.3em;
+}
+
+.title, .new-theme-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-theme-content {
+    min-height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.new-theme-content textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin: 0;
+}
+
+.new-theme-content label {
+    margin-bottom: 0.3em;
+}
+
+.new-theme-title input {
+    width: 55%;
+    border-radius: 0.3em;
+    padding: 0.35em;
+}
+
+button+button {
+    margin-left: 1rem;
+}
+
+.new-theme-buttons {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.new-theme-buttons button {
+    padding: 0.4em 1.5em;
+    border: 1px solid #333333;
+    border-radius: 0.3em;
+}
+
+p.error {
+    text-align: left;
+    border-radius: 0.3em;
+    color: red;
+    padding-top: 0;
+}
+
+.input-error {
+    border-left-color: red;
+} */

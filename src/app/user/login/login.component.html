@@ -1,0 +1,47 @@
+<main>
+  <div class="login-register-div">
+    <div class="login-register-box">
+      <h1>Login</h1>
+
+      <form>
+        <p>
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="john.doe@gmail.com"
+            #inputEmail
+          />
+        </p>
+        <!-- <p class="error">
+                Email is not valid!
+            </p> -->
+        <p>
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            id="password"
+            placeholder="******"
+            #inputPassword
+          />
+        </p>
+        <!-- <p class="error">
+                Password is required!
+            </p>
+            <p class="error">
+                Password must be at least 4 characters!
+            </p> -->
+
+        <button (click)="login(inputEmail.value, inputPassword.value)">
+          LogIn
+        </button>
+      </form>
+    </div>
+    <div class="second-option">
+      <p>Don't have account? <a routerLink="/register">Register</a></p>
+    </div>
+  </div>
+</main>

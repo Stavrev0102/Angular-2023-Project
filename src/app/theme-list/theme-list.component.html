@@ -1,0 +1,107 @@
+<main>
+  <div *ngIf="isLoading">
+    <app-loader/>
+  </div>
+  <div class="container">
+    <div class="col-9">
+
+      
+      <!-- Start Pet Photos Post Section -->
+      <div *ngFor="let animal of animalList" class="card">
+        <!-- Start User Details and Image Location -->
+        <div class="top">
+          <div class="userDetails">
+            <!-- Link to User Profile Page -->
+            <a href="#" action="#" method="#">
+              <div class="profilepic">
+                <div class="profile_img">
+                  <div class="image">
+                    <img src="/assets/person.png" />
+                  </div>
+                </div>
+              </div>
+            </a>
+            <h3>
+              <!-- Link to User Profile Page -->
+              <p>
+                <!-- show user username -->
+                {{animal.name}}
+              </p>
+              <!-- photo's location -->
+              <span>{{animal.location}}</span>
+            </h3>
+          </div>
+        </div>
+
+        <!-- Start Pet Photo -->
+        <div class="imgBx">
+          <img src={{animal.img}} alt="post" class="cover" />
+        </div>
+        <!-- Name of Pet -->
+        <h5 class="petName">Name: {{animal.name}}</h5>
+        <!-- Age of Pet -->
+        <h5 class="petAge">Age: {{animal.age}}</h5>
+        <!-- Link to Photo Details Page -->
+        <a [routerLink]="['/themes',animal.id]" id="see-details">
+          <h4 class="details">See details</h4>
+        </a>
+      </div>
+
+     <div *ngIf="animalList.length == 0" >
+      <article  class="not-available-photo">
+        <h1>No photo posts yet.</h1>
+      </article>
+      <!--If there are no photo yet!-->
+     </div>
+     
+
+      
+    </div>
+    
+  </div>
+
+</main>
+
+<!-- <main>
+
+  <div *ngIf="isLoading">
+    <app-loader/>
+  </div>
+
+  <div *ngFor="let book of themesList" class="card">
+    <a [routerLink]="[book.id]">
+      <img src={{book.img}} alt="Avatar" style="width:100%">
+    </a>
+    
+    <div class="container">
+      <h4><b>{{book.name}}</b></h4> 
+      <p>{{book.phone}}</p> 
+    </div>
+  </div>
+  
+</main>  -->
+
+<!-- <div class="theme-title" *ngIf="!isLoading">
+    <div *ngFor="let theme of themesList" class="theme-container">
+      <div class="theme-name-wrapper">
+        <div class="theme-name">
+          <a [routerLink]="theme.website" class="normal">
+            <h2>{{theme.name}}</h2>
+          </a>
+          <div class="columns">
+            <div>
+              <p>Date: <time>{{theme.phone}}</time></p>
+              <div class="nick-name">
+                <p>Username: <span>{{theme.email}}</span></p>
+              </div>
+            </div>
+            <div class="subscribers">
+              <button *ngIf="isLogged" class="subscribe">Subscribe</button>
+              <p>Subscribers: <span>{{theme.id}}</span></p>
+              <p>Image: <span>{{theme.img}}</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
