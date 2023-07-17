@@ -8,4 +8,4 @@ export interface Animal{
     location:string;
     name:string;
   
-}
+} 

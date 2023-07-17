@@ -1,16 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { Theme } from './types/theme';
-import { Post } from './types/post';
-import { newPost } from './types/new-post';
-import { SinglePost } from './types/singlePost';
-import { UserId } from './types/user-profile';
-import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
-import { NgForm } from '@angular/forms';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from "src/environments/environment";
+import { SinglePost } from "./types/singlePost";
+import { UserId } from "./types/user-profile";
+import {
+  Firestore,
+  addDoc,
+  collection,
+  collectionData,
+} from "@angular/fire/firestore";
+import { NgForm } from "@angular/forms";
+import { Animal } from "./types/animal";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class ApiService {
   constructor(private http: HttpClient, private fs: Firestore) {}
@@ -24,18 +27,18 @@ export class ApiService {
 
   getAnimals() {
     const { appUrl } = environment;
-    let collectionBooks = collection(this.fs, 'books');
-    return collectionData(collectionBooks, { idField: 'id' });
+    let collectionBooks = collection(this.fs, "books");
+    return collectionData(collectionBooks, { idField: "id" });
   }
-  
 
-  postTheme(form:NgForm) {
-    const data = form.value
-    console.log(data);
-    
-    let collectionBooks = collection(this.fs, 'books');
+  postTheme(form: NgForm) {
+    const data = form.value;
+    let animalPost: Animal[] = [];
+    animalPost = data;
 
-    return addDoc(collectionBooks,data)
+    let collectionBooks = collection(this.fs, "books");
+
+    return addDoc(collectionBooks, animalPost);
   }
 
   getProfile(id: string) {
