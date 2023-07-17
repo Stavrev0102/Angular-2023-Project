@@ -3,7 +3,7 @@
     <div class="login-register-box">
       <h1>Login</h1>
 
-      <form>
+      <form #form="ngForm" (ngSubmit)="login(form)">
         <p>
           <label>Email:</label>
           <input
@@ -11,12 +11,21 @@
             name="email"
             id="email"
             placeholder="john.doe@gmail.com"
-            #inputEmail
+            #inputEmail="ngModel"
+            required
+            ngModel
+            [appEmail]="appEmailDomains"
           />
         </p>
-        <!-- <p class="error">
-                Email is not valid!
-            </p> -->
+        <ng-container *ngIf="inputEmail.touched">
+            <p class="error" *ngIf="inputEmail?.errors?.['required']">
+              Email is required!
+          </p>
+          <p class="error" *ngIf="inputEmail.errors?.['appEmailValidator']">
+            Email is not valid!
+        </p>
+        </ng-container>
+       
         <p>
           <label>Password:</label>
           <input
@@ -25,17 +34,23 @@
             placeholder="Password"
             id="password"
             placeholder="******"
-            #inputPassword
+            #inputPassword="ngModel"
+            ngModel
+            required
+            minlength="8"
           />
         </p>
-        <!-- <p class="error">
-                Password is required!
-            </p>
-            <p class="error">
-                Password must be at least 4 characters!
-            </p> -->
+        <ng-container *ngIf="inputPassword.touched">
+          <p class="error" *ngIf="inputPassword?.errors?.['required']">
+                  Password is required!
+              </p>
+              <p class="error" *ngIf="inputPassword?.errors?.['minlength']">
+                  Password must be at least {{inputPassword?.errors?.['minlength']['requiredLength']}} characters!
+              </p>
+        </ng-container>
 
-        <button (click)="login(inputEmail.value, inputPassword.value)">
+        <button [disabled]="form.invalid"
+        [style]="{backgroundColor:form.invalid ? 'red' : 'blue'}">
           LogIn
         </button>
       </form>

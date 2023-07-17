@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserRoutingModule } from './user-routing.module';
 import { LoaderComponent } from '../shared/loader/loader.component';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +17,7 @@ import { SharedModule } from '../shared/shared.module';
     ProfileComponent
   ],
   imports: [
-    CommonModule,UserRoutingModule,SharedModule
+    CommonModule,UserRoutingModule,SharedModule,FormsModule,ReactiveFormsModule,
   ]
 })
 export class UserModule { }
