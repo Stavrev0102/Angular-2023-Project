@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../types/user';
+import { Form, NgForm } from '@angular/forms';
+import { Register } from '../types/register';
 
 @Injectable({
   providedIn: 'root',
@@ -22,18 +24,20 @@ export class UserService {
     }
   }
 
-  login(): void {
+  login(form:NgForm): void {
+    const currentForm = form.value
+    
     this.user = {
-      email: 'john@doe@gmailcom',
-      firstName: 'John',
+      email: currentForm.email,
+      firstName: currentForm.firstName,
     };
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
   }
 
-  register(): void {
+  register(data:any): void {
     this.user = {
-      email:'Stavre@abv.bg',
-      firstName:'Ivaylo',
+      email:data.email,
+      firstName:'Ivan'
     }
     localStorage.setItem(this.USER_KEY,JSON.stringify(this.user))
   }

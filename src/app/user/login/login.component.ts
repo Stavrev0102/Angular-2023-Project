@@ -13,10 +13,9 @@ export class LoginComponent {
   constructor(private userService: UserService, private router: Router) {}
   appEmailDomains = DEFAULT_EMAIL_DOMAINS
   login(form:NgForm): void {
-    console.log(form.value);
        if(form.invalid) return
-    // this.userService.login();
-    // this.router.navigate(['/'])
+    this.userService.login(form);
+    this.router.navigate(['/'])
   }
 }
  
