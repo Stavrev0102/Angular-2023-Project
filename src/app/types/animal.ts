@@ -1,11 +1,10 @@
 
 export interface Animal{
 
+    name:string
     age:string;
     description:string;
-    id:string;
-    img:string;
     location:string;
-    name:string;
+    img:string;
   
 } 

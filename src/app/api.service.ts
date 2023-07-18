@@ -8,9 +8,13 @@ import {
   addDoc,
   collection,
   collectionData,
+  deleteDoc,
+  doc,
+  getDoc,
 } from "@angular/fire/firestore";
 import { NgForm } from "@angular/forms";
 import { Animal } from "./types/animal";
+import { LoginComponent } from "./user/login/login.component";
 
 @Injectable({
   providedIn: "root",
@@ -18,17 +22,21 @@ import { Animal } from "./types/animal";
 export class ApiService {
   constructor(private http: HttpClient, private fs: Firestore) {}
 
-  getTheme(id: string) {
-    const { appUrl } = environment;
-    return this.http.get<SinglePost>(
-      `https://db-test-2-f0abf-default-rtdb.firebaseio.com/books/${id}/.json`
-    );
+  async getTheme(id: string) {
+    const docRef = doc(this.fs, "books", id);
+    const docSnap = await getDoc(docRef);
+    const result = docSnap.data()
+  
+   return result
   }
 
   getAnimals() {
     const { appUrl } = environment;
-    let collectionBooks = collection(this.fs, "books");
-    return collectionData(collectionBooks, { idField: "id" });
+    return this.http.get(`${appUrl}/books/.json`)
+  }
+  getAnimal(id:string){
+    const { appUrl } = environment;
+    return this.http.get<Animal>(`${appUrl}/books/${id}/.json`)
   }
 
   postTheme(form: NgForm) {
@@ -45,5 +53,10 @@ export class ApiService {
     return this.http.get<UserId>(
       `https://db-test-2-f0abf-default-rtdb.firebaseio.com/users/${id}/.json`
     );
+  }
+
+  delAnimal(id:string) {
+    let docRef = doc(this.fs,'books/'+id)
+    return deleteDoc(docRef)
   }
 }

@@ -7,7 +7,7 @@
 
       
       <!-- Start Pet Photos Post Section -->
-      <div *ngFor="let animal of animalList" class="card">
+      <div *ngFor="let animal of animalArray" class="card">
         <!-- Start User Details and Image Location -->
         <div class="top">
           <div class="userDetails">
@@ -42,9 +42,12 @@
         <!-- Age of Pet -->
         <h5 class="petAge">Age: {{animal.age}}</h5>
         <!-- Link to Photo Details Page -->
+        
         <a [routerLink]="['/themes',animal.id]" id="see-details">
           <h4 class="details">See details</h4>
         </a>
+   
+
       </div>
 
      <div *ngIf="animalList.length == 0" >
@@ -54,6 +57,7 @@
       <!--If there are no photo yet!-->
      </div>
      
+    
 
       
     </div>
@@ -61,6 +65,7 @@
   </div>
 
 </main>
+
 
 <!-- <main>
 

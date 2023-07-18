@@ -128,16 +128,16 @@ main .container {
   margin: 5% auto;
   margin-bottom: -20px;
   display: inline-block;
+ 
 }
 
 .col-9 .card {
   margin-bottom: 20px;
   position: relative;
-
   width: 100%;
-  /* min-height: 400px; */
-  display: inline;
+  
   border: 1px solid rgba(7, 7, 7, 0.24);
+  
 }
 
 .col-9 .card .top {
@@ -145,6 +145,7 @@ main .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid rgba(7, 7, 7, 0.24);
 }
 
 .col-9 .card .top .userDetails {
