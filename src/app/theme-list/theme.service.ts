@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Animal } from '../types/animal';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +11,20 @@ import { environment } from 'src/environments/environment';
 export class ThemeService {
 
   constructor(private http:HttpClient) { }
-    animal:any;
-
-     getAnimals():Observable<any> {
-        return this.http.get(`${environment.appUrl}/books/.json`)
-     }  
-
-  getArrayValues(animalArray:any,idArray:any){
-
-    for (const animal of animalArray) {
-      animal.id = idArray.shift()
+  animalArray:Animal[] = [];
+  animalId:string[] = []
+  getArrayValues(animals:object){
+    if(animals !== null){
+      this.animalArray = Object.values(animals)
+      this.animalId = Object.keys(animals);
+        
+      for (const animal of this.animalArray) {
+        animal.id = this.animalId.shift()
+      }
+      return this.animalArray
     }
-    return
+    return null
+
    }
 
 

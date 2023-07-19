@@ -13,10 +13,7 @@ export class ThemeListComponent implements OnInit {
 
   animalList:any = [];
   isLoading:boolean = true;
-  animalArray:any = [];
-  animalId:any = []
-  finalAnimal:any = []
-  constructor(private apiService: ApiService,private userService:UserService,private themeService1:ThemeService) {}
+  constructor(private apiService: ApiService,private userService:UserService,private themeService:ThemeService) {}
 
   get isLogged():boolean {
     return  this.userService.isLogged;
@@ -25,17 +22,10 @@ export class ThemeListComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.getAnimals().subscribe({
       next:(animals) => {
-
-        this.animalList = animals
-        console.log(this.animalList);
-
-        this.animalArray = Object.values(animals)
-        this.animalId = Object.keys(animals);
-        this.themeService1.getArrayValues(this.animalArray,this.animalId)
-        console.log(this.animalArray);
-        
-        console.log(this.animalId);
+        this.animalList = this.themeService.getArrayValues(animals)
         this.isLoading = false
+        console.log(this.animalList);
+        
       },
       error:(err) => { 
         console.error(`Error: ${err}`) 

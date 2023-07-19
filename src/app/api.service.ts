@@ -14,29 +14,24 @@ import {
 } from "@angular/fire/firestore";
 import { NgForm } from "@angular/forms";
 import { Animal } from "./types/animal";
-import { LoginComponent } from "./user/login/login.component";
+import { User } from "./types/user";
 
 @Injectable({
   providedIn: "root",
 })
 export class ApiService {
-  constructor(private http: HttpClient, private fs: Firestore) {}
-
-  async getTheme(id: string) {
-    const docRef = doc(this.fs, "books", id);
-    const docSnap = await getDoc(docRef);
-    const result = docSnap.data()
-  
-   return result
+  getProfile(arg0: string) {
+    throw new Error('Method not implemented.');
   }
+  constructor(private http: HttpClient, private fs: Firestore) {}
 
   getAnimals() {
     const { appUrl } = environment;
-    return this.http.get(`${appUrl}/books/.json`)
+    return this.http.get(`${appUrl}/animals/.json`)
   }
   getAnimal(id:string){
     const { appUrl } = environment;
-    return this.http.get<Animal>(`${appUrl}/books/${id}/.json`)
+    return this.http.get<Animal>(`${appUrl}/animals/${id}/.json`)
   }
 
   postTheme(form: NgForm) {
@@ -44,17 +39,11 @@ export class ApiService {
     let animalPost: Animal[] = [];
     animalPost = data;
     const { appUrl } = environment;
-    return this.http.get<Animal>(`${appUrl}/books/.json`,)
-  }
-
-  getProfile(id: string) {
-    return this.http.get<UserId>(
-      `https://db-test-2-f0abf-default-rtdb.firebaseio.com/users/${id}/.json`
-    );
+    return this.http.get<Animal>(`${appUrl}/animals/.json`,)
   }
 
   delAnimal(id:string) {
-    let docRef = doc(this.fs,'books/'+id)
-    return deleteDoc(docRef)
+    const { appUrl } = environment;
+    return this.http.delete(`${appUrl}/books/${id}/.json`,)
   }
 }

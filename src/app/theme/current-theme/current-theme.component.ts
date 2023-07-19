@@ -23,10 +23,7 @@ export class CurrentThemeComponent implements OnInit {
     currentAnimal:any = []
     isLoading:boolean = true
   ngOnInit(): void {
-    
     this.fetchTheme();
-
-    
   }
 
   get isLoggedIn(): boolean {
@@ -34,10 +31,7 @@ export class CurrentThemeComponent implements OnInit {
   }
 
    fetchTheme() {
-
     const id = this.activatedRoute.snapshot.params['themeId'];
-    console.log(id);
-    
     this.apiService.getAnimal(id).subscribe({
       next:((res) => {
         this.currentAnimal = res
@@ -49,8 +43,8 @@ export class CurrentThemeComponent implements OnInit {
 
   deleteAnimal(): void{
     const id = this.activatedRoute.snapshot.params['themeId'];
-    this.apiService.delAnimal(id)
-    this.router.navigate(['/themes'])
+    this.apiService.delAnimal(id).subscribe()
+    this.router.navigate(['/'])
     
   }
 }

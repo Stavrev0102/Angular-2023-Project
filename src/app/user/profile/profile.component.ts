@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { UserId } from 'src/app/types/user-profile';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,9 +10,9 @@ import { UserId } from 'src/app/types/user-profile';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  profile: UserId | undefined;
+  profile: any;
   isLoading:boolean = true
-  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute,) {}
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute,) {}
 
   ngOnInit(): void {
     this.profileInfo();
@@ -20,10 +21,12 @@ export class ProfileComponent implements OnInit {
 
    
   profileInfo():void{
-    const profile = this.apiService.getProfile('1').subscribe(profile => {
-      this.profile = profile
+    this.userService.getaAllProfile().subscribe({
+      next:(profiles) => {
+        console.log(profiles);
+        
+      }
     })
-    
-    
+  
   }
 }

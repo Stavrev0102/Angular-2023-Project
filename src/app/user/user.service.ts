@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { User } from '../types/user';
 import { Form, NgForm } from '@angular/forms';
 import { Register } from '../types/register';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +17,7 @@ export class UserService {
     return !!this.user;
   }
 
-  constructor() {
+  constructor(private http:HttpClient) {
     try {
       const lsUser = localStorage.getItem(this.USER_KEY) || '';
       this.user = JSON.parse(lsUser);
@@ -46,4 +48,10 @@ export class UserService {
     this.user = undefined;
     localStorage.removeItem(this.USER_KEY);
   }
+  getaAllProfile() {
+    const { appUrl } = environment;
+    return this.http.get(`${appUrl}/animals/.json`,)
+  }
+
+
 }

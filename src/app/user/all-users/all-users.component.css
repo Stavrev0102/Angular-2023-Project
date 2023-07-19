@@ -1,0 +1,25 @@
+        /* User List Styles */
+        .user-list {
+            list-style-type: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .user-list li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        .user-list li:hover {
+            background-color: #ebebeb;
+        }
+
+        .user-name {
+            font-weight: bold;
+        }
+
+        .user-email {
+            color: #777;
+        }

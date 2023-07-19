@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthActivate } from '../core/guards/auth.activate';
+import { AllUsersComponent } from './all-users/all-users.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
     component: ProfileComponent,
     //canActivate: [AuthActivate],
   },
+  {
+    path:'all-users',
+    component:AllUsersComponent
+  }
   
   
 ];
