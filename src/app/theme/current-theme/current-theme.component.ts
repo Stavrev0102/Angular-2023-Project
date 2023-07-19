@@ -13,7 +13,7 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class CurrentThemeComponent implements OnInit {
   book: SinglePost | undefined;
-animal: any;
+  animal: any;
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
@@ -21,7 +21,9 @@ animal: any;
     private router:Router
   ) {}
     currentAnimal:any = []
+    isLoading:boolean = true
   ngOnInit(): void {
+    
     this.fetchTheme();
 
     
@@ -39,11 +41,9 @@ animal: any;
     this.apiService.getAnimal(id).subscribe({
       next:((res) => {
         this.currentAnimal = res
+        this.isLoading = false
       })
-    })
-    
-    // console.log(this.apiService.getTheme(id));
-    // return this.animal = await this.apiService.getTheme(id);
+    });
          
   }
 

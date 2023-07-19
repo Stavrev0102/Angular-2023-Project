@@ -1,7 +1,7 @@
+
 <div class="container">
   <div class="col-9">
     <!-- Start Pet Photo Post Section -->
-    <div class="card">
       <div class="top">
         <!-- Start User Details and Image Location Section -->
         <div class="userDetails">
@@ -15,9 +15,14 @@
               </div>
             </div>
           </div>
+          <div class="card">
+            <div *ngIf="isLoading">
+              <app-loader/>
+            </div>
           <h3>
             <!-- Link to User Profile Details Page -->
             <p>
+              
               <!-- User's username -->
               MayaM
             </p>
