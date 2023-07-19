@@ -24,8 +24,20 @@ const routes: Routes = [
   },
   {
     path:'all-users',
-    component:AllUsersComponent
-  }
+    children:[
+      {
+        path:'',
+        pathMatch:'full',
+        component:AllUsersComponent
+      },
+      {
+        path:':id',
+        component:ProfileComponent
+      }
+    ]
+
+  },
+
   
   
 ];

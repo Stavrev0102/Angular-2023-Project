@@ -1,19 +1,16 @@
-<body>
+<div *ngIf="isLoading">
+    <app-loader/>
+  </div>
+ <body>
     <h1>All Users</h1>
 
     <ul class="user-list">
-        <li>
-            <span class="user-name">John Doe</span>
-            <span class="user-email">johndoe@example.com</span>
+        <li *ngFor="let user of usersArray">
+            <img src="/assets/profile.png" alt="Profile Picture" class="user-avatar">
+            <span>
+                <a [routerLink]="['/all-users', user.id]" class="user-email">{{user.email}}</a>
+            
+            </span>
         </li>
-        <li>
-            <span class="user-name">Jane Smith</span>
-            <span class="user-email">janesmith@example.com</span>
-        </li>
-        <li>
-            <span class="user-name">Mark Johnson</span>
-            <span class="user-email">markjohnson@example.com</span>
-        </li>
-        <!-- Add more user list items here -->
     </ul>
 </body>

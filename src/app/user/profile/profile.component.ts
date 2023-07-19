@@ -12,8 +12,9 @@ import { UserService } from '../user.service';
 export class ProfileComponent implements OnInit {
   profile: any;
   isLoading:boolean = true
+  usersArray: any;
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute,) {}
-
+  currentUser:any = []
   ngOnInit(): void {
     this.profileInfo();
     this.isLoading = false
@@ -21,10 +22,12 @@ export class ProfileComponent implements OnInit {
 
    
   profileInfo():void{
-    this.userService.getaAllProfile().subscribe({
-      next:(profiles) => {
-        console.log(profiles);
-        
+    this.userService.getAllProfile().subscribe({
+      next:(users) => {
+        this.usersArray = this.userService.getAllProfilesWithId(users)
+        //ne
+          this.currentUser = this.usersArray.pop()  
+          
       }
     })
   

@@ -11,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
   user: User | undefined;
   USER_KEY = '[user]';
+  usersArray:any = [];
+  usersId:string[] = []
 
   get isLogged(): boolean {
     // !! to be sure that it is boolean
@@ -48,10 +50,25 @@ export class UserService {
     this.user = undefined;
     localStorage.removeItem(this.USER_KEY);
   }
-  getaAllProfile() {
+  getAllProfile() {
     const { appUrl } = environment;
-    return this.http.get(`${appUrl}/animals/.json`,)
+    return this.http.get(`${appUrl}/users/.json`,)
   }
+  
 
+  getAllProfilesWithId(users:object){
+    if(users !== null){
+      this.usersArray = Object.values(users);
+       this.usersId = Object.keys(users)
+  
+  for (const user of this.usersArray) {
+    user.id = this.usersId.shift();
+  }
+    return this.usersArray
+      }
+      
+      
+    
+  }
 
 }
