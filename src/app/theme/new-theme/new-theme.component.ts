@@ -13,8 +13,7 @@ export class NewThemeComponent {
   constructor(private apiService:ApiService,private router:Router) {}
 
   createPost(form:NgForm){
-    this.apiService.postTheme(form).then((res) => {
-    });
+    this.apiService.postTheme(form)
     this.router.navigate(['/'])
     
   }

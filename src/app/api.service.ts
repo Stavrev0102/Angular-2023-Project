@@ -43,10 +43,8 @@ export class ApiService {
     const data = form.value;
     let animalPost: Animal[] = [];
     animalPost = data;
-
-    let collectionBooks = collection(this.fs, "books");
-
-    return addDoc(collectionBooks, animalPost);
+    const { appUrl } = environment;
+    return this.http.get<Animal>(`${appUrl}/books/.json`,)
   }
 
   getProfile(id: string) {
