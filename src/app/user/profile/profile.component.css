@@ -1,6 +1,77 @@
 
 
-.profile {
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .profile {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 10px auto;
+    object-fit: cover;
+  }
+  
+  .profile-name {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .profile-bio {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .profile-details {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .profile-details li {
+    margin-bottom: 8px;
+  }
+  
+  .profile-details strong {
+    margin-right: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .profile-details a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .profile-details a:hover {
+    text-decoration: underline;
+  }
+
+
+
+
+
+
+/* .profile {
     margin: 140px 35% 0 38%;
     text-align: center;
     padding: 6px;
@@ -183,76 +254,4 @@
 
 .step-links a:hover {
     text-shadow: none;
-}
-
-/* .profile {
-    width: 100%;
-    max-width: 500px;
-    margin: 2em auto 1rem;
-    padding: .5em;
-    border: .3em solid rgb(0, 212, 255);
-    border-radius: .5rem;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #444;
-    background-color: hsla(0, 0%, 94.1%, .8);
-    box-shadow: 0 0 1em 0 #000;
-    text-align: center;
-}
-
-.profile h3 {
-    text-decoration: underline;
-}
-
-.profile img {
-    width: 7em;
-    height: 7em;
-    margin: auto;
-    display: block;
-}
-
-.flex {
-    display: flex;
-}
-
-.flex p:first-child {
-    width: 35%;
-    text-align: right;
-    margin: .5em;
-}
-
-.flex p:last-child {
-    width: 55%;
-    text-align: left;
-    margin: .5em;
-    font-weight: bold;
-}
-
-.profile button {
-    color: white;
-    border: none;
-    border-radius: 0.3em;
-    padding: 0.6em 1.2em;
-    outline: none;
-}
-
-.flex > input, .flex > div {
-    width: 55%;
-    text-align: left;
-    margin: .5em;
-}
-
-.flex > div > input {
-    width: 77%;
-}
-
-.flex select {
-    padding: 0.17em 0;
-}
-
-.red-button {
-    background-color: red;
-}
-
-.green-button {
-    background-color: green;
 } */

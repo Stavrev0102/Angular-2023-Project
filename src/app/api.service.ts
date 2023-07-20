@@ -1,20 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
-import { SinglePost } from "./types/singlePost";
-import { UserId } from "./types/user-profile";
-import {
-  Firestore,
-  addDoc,
-  collection,
-  collectionData,
-  deleteDoc,
-  doc,
-  getDoc,
-} from "@angular/fire/firestore";
 import { NgForm } from "@angular/forms";
 import { Animal } from "./types/animal";
-import { User } from "./types/user";
+import { Observable, map } from "rxjs";
+import { FbCreatedResponse } from "./types/FbCreatedResponse";
+import { Post } from "./types/post";
 
 @Injectable({
   providedIn: "root",
@@ -23,27 +14,38 @@ export class ApiService {
   getProfile(arg0: string) {
     throw new Error('Method not implemented.');
   }
-  constructor(private http: HttpClient, private fs: Firestore) {}
+  constructor(private http: HttpClient) {}
 
-  getAnimals() {
-    const { appUrl } = environment;
-    return this.http.get(`${appUrl}/animals/.json`)
-  }
-  getAnimal(id:string){
+  getAll():Observable<Animal[]>{
+    const { appUrl } = environment
+    return this.http.get<Animal>(`${appUrl}/animals/.json`)
+    .pipe(map((response : {[key:string] : any}) => {
+      return Object.keys(response).map((key:string) => ({
+        ...response[key],
+        id:key,
+      }))
+    }))
+   }
+
+  getAnimal( id:string ):Observable<Animal>{
     const { appUrl } = environment;
     return this.http.get<Animal>(`${appUrl}/animals/${id}/.json`)
   }
 
-  postTheme(form: NgForm) {
+  postAnimal(form: NgForm):Observable<Post> {
     const data = form.value;
-    let animalPost: Animal[] = [];
-    animalPost = data;
     const { appUrl } = environment;
-    return this.http.get<Animal>(`${appUrl}/animals/.json`,)
+    return this.http.post<Post>(`${appUrl}/animals/.json`,data)
+    .pipe(map((response: FbCreatedResponse) => {
+      return {
+        ...data,
+        id:response.name
+      }
+    }))
   }
 
-  delAnimal(id:string) {
+  delAnimal(id:string):Observable<any>{
     const { appUrl } = environment;
-    return this.http.delete(`${appUrl}/books/${id}/.json`,)
+    return this.http.delete(`${appUrl}/animals/${id}/.json`,)
   }
 }

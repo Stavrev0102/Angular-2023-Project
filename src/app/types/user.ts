@@ -1,6 +1,8 @@
 export interface User {
     email:string;
-    firstName:string;
-    // phoneNumber:string;
-    // password:string;
+    password:string;
+    id:string | undefined
+    tel:string;
+    username:string;
   }
+  //yes

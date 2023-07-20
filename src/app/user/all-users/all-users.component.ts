@@ -9,18 +9,19 @@ import { UserService } from '../user.service';
   styleUrls: ['./all-users.component.css']
 })
 export class AllUsersComponent implements OnInit{
-constructor(private http:HttpClient,private userService:UserService){}
+constructor(private userService:UserService){}
 isLoading:boolean = true
 usersArray:any = [];
+
   ngOnInit(): void {
     this.userService.getAllProfile().subscribe({
       next:(users) => {
-        this.usersArray = this.userService.getAllProfilesWithId(users)
-          this.isLoading = false
+        this.usersArray = users;
+        this.isLoading = false;
           
       }
     })
   }
- 
+  
 }
  

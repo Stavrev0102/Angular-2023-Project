@@ -1,11 +1,8 @@
 
 <div class="container">
   <div class="col-9">
-    <!-- Start Pet Photo Post Section -->
       <div class="top">
-        <!-- Start User Details and Image Location Section -->
         <div class="userDetails">
-          <!-- Link to User Profile Details Page-->
           <div>
             <div class="profilepic">
               <div class="profile_img">
@@ -27,7 +24,7 @@
               MayaM
             </p>
             <!-- photo's location -->
-            <span>Bansko, Bulgaria</span>
+            <span>{{currentAnimal.location}}</span>
 
             <!-- IF the viewer is the creator of the photo -->
             <div *ngIf="isLoggedIn" class="edit-delete-btns">
@@ -56,7 +53,7 @@
       <!-- Start Pet Photo -->
       <div class="imgBx">
         <!-- Pet Photo -->
-        <img src="/assets/axolotl.jpeg" alt="post" class="cover" />
+        <img src={{currentAnimal.img}} alt="post" class="cover" />
       </div>
 
       <div class="bottom">
@@ -70,20 +67,7 @@
           <p class="petAge">Age: {{currentAnimal?.age}}</p>
         </div>
       </div>
-      <!-- <div class="addComments">
-
-        <form method="#" action="#">
-          <textarea
-            id="comment-textarea"
-            name=""
-            cols="40"
-            rows="10"
-            placeholder="Add comment..."
-          ></textarea>
-      
-          <button type="submit">Post</button>
-        </form>
-      </div> -->
+    
     </div>
   </div>
 </div>

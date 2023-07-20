@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
-import { Animal } from 'src/app/types/animal';
-import {  SinglePost } from 'src/app/types/singlePost';
-import { Theme } from 'src/app/types/theme';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -12,16 +9,16 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./current-theme.component.css'],
 })
 export class CurrentThemeComponent implements OnInit {
-  book: SinglePost | undefined;
-  animal: any;
+ 
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private router:Router
   ) {}
-    currentAnimal:any = []
-    isLoading:boolean = true
+    currentAnimal:any = [];
+    isLoading:boolean = true;
+
   ngOnInit(): void {
     this.fetchTheme();
   }
@@ -30,8 +27,9 @@ export class CurrentThemeComponent implements OnInit {
     return this.userService.isLogged;
   }
 
-   fetchTheme() {
-    const id = this.activatedRoute.snapshot.params['themeId'];
+   fetchTheme(): void{
+    const id:string = this.activatedRoute.snapshot.params['themeId'];
+    //console.log(this.activatedRoute.snapshot.params);
     this.apiService.getAnimal(id).subscribe({
       next:((res) => {
         this.currentAnimal = res
@@ -42,9 +40,8 @@ export class CurrentThemeComponent implements OnInit {
   }
 
   deleteAnimal(): void{
-    const id = this.activatedRoute.snapshot.params['themeId'];
-    this.apiService.delAnimal(id).subscribe()
-    this.router.navigate(['/'])
-    
+    const id:string = this.activatedRoute.snapshot.params['themeId'];    
+    console.log(this.apiService.delAnimal(id).subscribe())
+    this.router.navigate(['/'])    
   }
 }

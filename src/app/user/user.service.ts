@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { User } from '../types/user';
-import { Form, NgForm } from '@angular/forms';
-import { Register } from '../types/register';
+import { NgForm } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  user: User | undefined;
+  user: any;   //da se oprawi posle na user
   USER_KEY = '[user]';
   usersArray:any = [];
   usersId:string[] = []
@@ -50,25 +50,34 @@ export class UserService {
     this.user = undefined;
     localStorage.removeItem(this.USER_KEY);
   }
-  getAllProfile() {
-    const { appUrl } = environment;
-    return this.http.get(`${appUrl}/users/.json`,)
+  getAllProfile():Observable<User[]> {
+      const { appUrl } = environment
+      return this.http.get<User>(`${appUrl}/users/.json`)
+      .pipe(map((response : {[key:string] : any}) => {
+        return Object.keys(response).map((key:string) => ({
+          ...response[key],
+          id:key,
+        }))
+      }))
+     
   }
-  
 
-  getAllProfilesWithId(users:object){
-    if(users !== null){
-      this.usersArray = Object.values(users);
-       this.usersId = Object.keys(users)
+  getProfileById(id:string):Observable<User>{
+    const { appUrl } = environment
+    return this.http.get<User>(`${appUrl}/users/${id}.json`)
+  }
   
-  for (const user of this.usersArray) {
-    user.id = this.usersId.shift();
-  }
-    return this.usersArray
-      }
-      
-      
-    
-  }
+      //old solution
+  // getAllProfilesWithId(users:object){
+  //   if(users !== null){
+  //     this.usersArray = Object.values(users);
+  //      this.usersId = Object.keys(users)
+  
+  // for (const user of this.usersArray) {
+  //   user.id = this.usersId.shift();
+  // }
+  //   return this.usersArray
+  //     }
+  // }
 
 }
