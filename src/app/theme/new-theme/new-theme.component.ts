@@ -14,7 +14,9 @@ export class NewThemeComponent {
   constructor(private apiService:ApiService,private router:Router) {}
 
   createPost(form:NgForm){
-    this.apiService.postAnimal(form).subscribe({
+    //get id from current user and add it after form
+    const id = '123'
+    this.apiService.postAnimal(form,id).subscribe({
       next:(res:DBPOST) => {
         console.log(res);
       }

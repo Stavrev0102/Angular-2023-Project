@@ -32,8 +32,9 @@ export class ApiService {
     return this.http.get<Animal>(`${appUrl}/animals/${id}/.json`)
   }
 
-  postAnimal(form: NgForm):Observable<Post> {
+  postAnimal(form: NgForm,id:string):Observable<Post> {
     const data = form.value;
+    data.owner_id = id;
     const { appUrl } = environment;
     return this.http.post<Post>(`${appUrl}/animals/.json`,data)
     .pipe(map((response: FbCreatedResponse) => {
