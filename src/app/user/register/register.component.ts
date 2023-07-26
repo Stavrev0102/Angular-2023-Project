@@ -6,6 +6,8 @@ import { matchPasswordValidator } from "src/app/shared/validators/match-password
 import { appEmailValidator } from "src/app/shared/validators/app-email-validator";
 import { DEFAULT_EMAIL_DOMAINS } from "src/app/shared/constants";
 import { Register } from "src/app/types/register";
+import { AngularFireAuth } from "@angular/fire/compat/auth";
+//import { AuthService } from "src/app/auth/auth.service";
 
 @Component({
   selector: "app-register",
@@ -31,14 +33,22 @@ export class RegisterComponent {
     private userService: UserService,
     private router: Router,
     private fb: FormBuilder,
+    private afAuth: AngularFireAuth
+    //private authService:AuthService
   ) {}
 
 
-  register() {
+  async register() {
     if(this.form.invalid) return
     const data = this.form.value
     
-     this.userService.register(data);
+    this.userService.register(data);
+    this.userService.setProfileInRB(data).subscribe({
+      next:() => {},
+      error:(err) => {console.log(err);
+      },
+    })
      this.router.navigate(["/home"]);
   }
 }
+ 

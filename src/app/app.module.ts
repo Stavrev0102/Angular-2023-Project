@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -6,25 +6,27 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { MainComponent } from './main/main.component';
 import { ThemeListComponent } from './theme-list/theme-list.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
 import { ThemeModule } from './theme/theme.module';
 
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { environment1 } from 'src/environments/environment';
+import { AuthInterceptor } from './auth/auth.interceptor';
+//import { AuthInterceptor } from './auth/auth.interceptor';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAjAA4lPW2ZKvv2ulVU9QePI821P1NlTIU",
-  authDomain: "db-test-2-f0abf.firebaseapp.com",
-  databaseURL: "https://db-test-2-f0abf-default-rtdb.firebaseio.com",
-  projectId: "db-test-2-f0abf",
-  storageBucket: "db-test-2-f0abf.appspot.com",
-  messagingSenderId: "833901530760",
-  appId: "1:833901530760:web:f40bea4a8a7454e26a193d",
-  measurementId: "G-JXSB864988"
+
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor,
 };
 
 @NgModule({
@@ -37,17 +39,19 @@ const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
-    provideFirebaseApp(() => initializeApp(firebaseConfig)),
-    provideFirestore(() => getFirestore()),
+    UserModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment1.firebaseConfig),
+    //provideFirebaseApp(() => initializeApp(environment1.firebaseConfig)),
+    //provideFirestore(() => getFirestore()),
     CoreModule,
     HttpClientModule,
     SharedModule,
-    UserModule,
     ThemeModule,
     AppRoutingModule,
    
   ],
-  providers: [],
+  providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
