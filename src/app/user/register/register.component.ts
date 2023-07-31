@@ -36,19 +36,24 @@ export class RegisterComponent {
     private afAuth: AngularFireAuth
     //private authService:AuthService
   ) {}
-
+    id:string = '';
 
   async register() {
     if(this.form.invalid) return
     const data = this.form.value
     
-    this.userService.register(data);
+   const currentUser = this.userService.register(data)
+   console.log(currentUser)
+   
     this.userService.setProfileInRB(data).subscribe({
-      next:() => {},
+      next:(res) => {
+        const id = Object.values(res).join('');
+        localStorage.setItem('DB-User',id)   
+      },
       error:(err) => {console.log(err);
       },
     })
-     this.router.navigate(["/home"]);
+     this.router.navigate(["/login"]);
   }
 }
  

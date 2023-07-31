@@ -28,8 +28,7 @@ export class CurrentThemeComponent implements OnInit {
   }
 
    fetchTheme(): void{
-    const id:string = this.activatedRoute.snapshot.params['themeId'];
-    //console.log(this.activatedRoute.snapshot.params);
+    const id:string = this.activatedRoute.snapshot.params['themeId']; 
     this.apiService.getAnimal(id).subscribe({
       next:((res) => {
         this.currentAnimal = res

@@ -41,7 +41,7 @@ export class ApiService {
       .get<User>(`${appUrl}/users/${userId}/.json`);
   }
 
-  postAnimal(form: NgForm,id:string):Observable<Post> {
+  postAnimal(form: NgForm,id:string | null):Observable<Post> {
     const data = form.value;
     data.owner_id = id;
     const { appUrl } = environment;

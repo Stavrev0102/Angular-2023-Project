@@ -7,7 +7,19 @@
       <div *ngFor="let animal of animalList" class="card">
         <div class="top">
           <div class="userDetails">
-            <a href="#" action="#" method="#">
+             
+              <a *ngIf="isLogged" [routerLink]="['/all-users',animal.owner_id]">
+              
+              <div class="profilepic">
+                <div class="profile_img">
+                  <div class="image">
+                    <img src="/assets/person.png" />
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a *ngIf="!isLogged" [routerLink]="['/login']">
+              
               <div class="profilepic">
                 <div class="profile_img">
                   <div class="image">

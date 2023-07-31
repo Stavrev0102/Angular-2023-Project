@@ -4,7 +4,7 @@ export interface Animal{
     description:string;
     img:string;
     id:string | undefined
-    userId:string | undefined
+    owner_id:string | undefined
     location:string;
     name:string
 }  

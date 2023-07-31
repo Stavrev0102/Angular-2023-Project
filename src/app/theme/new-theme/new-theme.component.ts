@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { DBPOST } from 'src/app/types/DBPOST';
 import { User } from 'src/app/types/user';
+import { UserService } from 'src/app/user/user.service';
 
 
 @Component({
@@ -12,12 +13,11 @@ import { User } from 'src/app/types/user';
   styleUrls: ['./new-theme.component.css'],
 })
 export class NewThemeComponent {
-  constructor(private apiService:ApiService,private router:Router) {}
+  constructor(private apiService:ApiService,private router:Router,private userService:UserService) {}
   currentUser:any
-  id:string = '';
   
   createPost(form:NgForm){
-    //get id from current user and add it after form
+   const id = this.userService.getUserId()
     const currentUser = this.apiService.getCurrentUser().subscribe({
       next:(res) => {console.log(res);
       
@@ -25,7 +25,6 @@ export class NewThemeComponent {
       error:(err) => {console.log(err);
       }
     })
-    let id = '1'
     this.apiService.postAnimal(form,id).subscribe({
       next:(res:DBPOST) => {
         

@@ -18,21 +18,12 @@ export class ProfileComponent implements OnInit {
 
    
   profileInfo():void{
-    const id = this.activatedRoute.snapshot.params['id'];
+    const id = (this.activatedRoute.snapshot.params['id'])
     this.userService.getProfileById(id).subscribe({
       next:(current) => {
         this.currentUser = current
       }
-    })
-    // this.userService.getAllProfile().subscribe({
-    //   next:(users) => {
-    //     this.usersArray = this.userService.getAllProfilesWithId(users)
-    //     const id = this.activatedRoute.snapshot.params['id'];
-
-    //  
-          
-    //   }
-    // })
+    });
   
   }
 }

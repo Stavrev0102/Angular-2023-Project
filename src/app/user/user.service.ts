@@ -5,7 +5,10 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import * as Angul from '@angular/fire/database';
 import { Animal } from '../types/animal';
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +36,8 @@ export class UserService {
     }
   }
 
+
+
   async login(form:NgForm): Promise<firebase.default.auth.UserCredential> {
     const currentForm = form.value
      const {email,password} = form.value
@@ -52,6 +57,11 @@ export class UserService {
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
+
+  getUserId():string | null {
+    return localStorage.getItem('DB-User')
+  }
+
 
   setToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
@@ -77,22 +87,19 @@ export class UserService {
 
 
 
-  register(data:any): void {
+  register(data:any){
     
     const {username,email,telephone,passGroup} = data
     this.afAuth.createUserWithEmailAndPassword(email,passGroup.password)
       .then((userCredential) => {
         // User successfully registered.
         this.user = {
-          username:username,
-          email:email,
-          telephone:telephone,
-          id:userCredential.user?.uid
+          email:userCredential.user?.email,
         }
-        console.log('user ----->',this.user);
-        
-        localStorage.setItem(this.USER_KEY,JSON.stringify(this.user))
+        localStorage.setItem(this.USER_KEY,JSON.stringify(this.user));
         console.log('Registered:', userCredential);
+        return this.user;
+      
       })
       .catch((error) => {
         // Handle registration error.
@@ -118,7 +125,7 @@ export class UserService {
      
   }
 
-  getProfileById(id:string):Observable<User>{
+  getProfileById(id:string | null):Observable<User>{
     const { appUrl } = environment
     return this.http.get<User>(`${appUrl}/users/${id}.json`)
   }
