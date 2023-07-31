@@ -20,6 +20,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { environment1 } from 'src/environments/environment';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { AuthGuard } from './auth/auth-guard.guard';
 //import { AuthInterceptor } from './auth/auth.interceptor';
 
 
@@ -51,7 +52,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     AppRoutingModule,
    
   ],
-  providers: [INTERCEPTOR_PROVIDER],
+  providers: [INTERCEPTOR_PROVIDER,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

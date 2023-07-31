@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { UserService } from '../user/user.service';
 import { Animal } from '../types/animal';
+import { Subscription } from 'rxjs';
+import { CanActivateFn } from '@angular/router';
 
 @Component({
   selector: 'app-theme-list',
   templateUrl: './theme-list.component.html',
   styleUrls: ['./theme-list.component.css'],
 })
-export class ThemeListComponent implements OnInit {
-
+export class ThemeListComponent implements OnInit, OnDestroy {
+  animalSubscription:Subscription = new Subscription
   animalList:Animal[] = [];
   isLoading:boolean = true;
   constructor(private apiService: ApiService,private userService:UserService) {}
@@ -19,11 +21,16 @@ export class ThemeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  this.apiService.getAll().subscribe({
+  this.animalSubscription =  this.apiService.getAll().subscribe({
     next:((res) => {
-      this.animalList = res;
+      this.animalList = res.reverse();
       this.isLoading = false;  
+      
     })
-  })
+  });
+
+  }
+  ngOnDestroy(): void {
+    this.animalSubscription.unsubscribe()
   }
 }

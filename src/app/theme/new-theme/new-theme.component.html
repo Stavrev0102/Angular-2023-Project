@@ -63,6 +63,19 @@
           <p class="error" *ngIf="inputLocation?.errors?.['required']"> Location is required.</p>
         </ng-container>
       </p>
+      <p>
+        <input
+          type="text"
+          name="breed"
+          placeholder="Breed"
+          ngModel
+          #inputBreed="ngModel"
+          required
+        />
+        <ng-container *ngIf="inputBreed.touched">
+          <p class="error" *ngIf="inputLocation?.errors?.['required']"> Breed is required.</p>
+        </ng-container>
+      </p>
 
       <p>
         <input

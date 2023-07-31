@@ -41,19 +41,29 @@ export class RegisterComponent {
   async register() {
     if(this.form.invalid) return
     const data = this.form.value
-    
-   const currentUser = this.userService.register(data)
-   console.log(currentUser)
+
+    const userData = await this.userService.register(data);
+    this.userService.saveUserData(
+      userData.user?.uid,
+      data.username,
+      data.email,
+      data.telephone,
+    );
+
+    this.router.navigate(["/themes"]);
+  } 
+  //  const currentUser = this.userService.register(data)
+  //  console.log(currentUser)
    
-    this.userService.setProfileInRB(data).subscribe({
-      next:(res) => {
-        const id = Object.values(res).join('');
-        localStorage.setItem('DB-User',id)   
-      },
-      error:(err) => {console.log(err);
-      },
-    })
-     this.router.navigate(["/login"]);
+    // this.userService.setProfileInRB(data).subscribe({
+    //   next:(res) => {
+    //     const id = Object.values(res).join('');
+    //     localStorage.setItem('DB-User',id)   
+    //   },
+    //   error:(err) => {console.log(err);
+    //   },
+    // })
+    //  this.router.navigate(["/catalog"]);
   }
-}
+
  

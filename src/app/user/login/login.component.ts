@@ -19,8 +19,8 @@ export class LoginComponent {
   appEmailDomains = DEFAULT_EMAIL_DOMAINS;
   login(form: NgForm): void {
     if (form.invalid) return;
-
     this.userService.login(form);
+    
     console.log('done');
     
     this.router.navigate(["/"]);

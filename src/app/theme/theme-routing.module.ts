@@ -5,6 +5,7 @@ import { NewThemeComponent } from './new-theme/new-theme.component';
 import { CurrentThemeComponent } from './current-theme/current-theme.component';
 import { AuthActivate } from '../core/guards/auth.activate';
 import { NotFoundComponent } from '../not-found/not-found.component';
+import { AuthGuard } from '../auth/auth-guard.guard';
 //import { NotFoundComponent } from '../not-found/not-found.component';
 
 const routes: Routes = [
@@ -18,15 +19,16 @@ const routes: Routes = [
       },
       {
         path:':themeId',
-        component:CurrentThemeComponent
+        component:CurrentThemeComponent,
+        canActivate: [AuthGuard],
 
       },
-    ],
+    ], 
   },
   {
     path: 'add-theme',
     component: NewThemeComponent,
-    canActivate:[AuthActivate],
+    canActivate:[AuthGuard],
 
   }
 ];

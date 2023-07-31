@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthActivate } from '../core/guards/auth.activate';
 import { AllUsersComponent } from './all-users/all-users.component';
+import { AuthGuard } from '../auth/auth-guard.guard';
 
 const routes: Routes = [
   {
@@ -15,12 +16,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
-    //canActivate: [AuthActivate],
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    //canActivate: [AuthActivate],
+    canActivate: [AuthGuard],
   },
   {
     path:'all-users',
@@ -28,14 +28,16 @@ const routes: Routes = [
       {
         path:'',
         pathMatch:'full',
-        component:AllUsersComponent
+        component:AllUsersComponent,
+        canActivate:[AuthGuard]
       },
       {
         path:':id',
-        component:ProfileComponent
+        component:ProfileComponent,
+        canActivate: [AuthGuard],
       },
-    ]
-
+    ],
+    canActivate: [AuthGuard],
   },
 
   

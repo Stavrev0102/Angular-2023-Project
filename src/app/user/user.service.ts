@@ -5,8 +5,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import * as Angul from '@angular/fire/database';
-import { Animal } from '../types/animal';
+import { AngularFireDatabase } from "@angular/fire/compat/database";
 
 
 
@@ -27,7 +26,7 @@ export class UserService {
     return !!token;
   }
 
-  constructor(private http:HttpClient, private afAuth: AngularFireAuth) {
+  constructor(private http:HttpClient, private afAuth: AngularFireAuth, private afDb: AngularFireDatabase) {
     try {
       const lsUser = localStorage.getItem(this.USER_KEY) || '';
       this.user = JSON.parse(lsUser);
@@ -36,6 +35,29 @@ export class UserService {
     }
   }
 
+  public saveUserData(
+    uid: any,
+    username: any,
+    email: any,
+    telephone:any
+  ): void {
+    const userData = {
+      username,
+      email,
+      telephone,
+  
+    };
+
+    this.afDb.database
+      .ref("users/" + uid)
+      .update(userData)
+      .then(() => {
+        console.log("User data saved successfully!");
+      })
+      .catch((error) => {
+        console.error("Error saving user data:", error);
+      });
+  }
 
 
   async login(form:NgForm): Promise<firebase.default.auth.UserCredential> {
@@ -54,13 +76,39 @@ export class UserService {
    
   }
 
+
+  async register(data:any):  Promise<firebase.default.auth.UserCredential>  {
+
+    const {username,email,telephone,passGroup} = data
+    const user = await this.afAuth.createUserWithEmailAndPassword(
+      email,
+      passGroup.password
+    )
+    if (user && ( user).user) {
+      const { uid } = user.user;
+      this.setUserId(uid);
+      const token = await user.user.getIdToken();
+      this.setToken(token);
+    }
+    
+    return user;
+  }
+
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
 
   getUserId():string | null {
-    return localStorage.getItem('DB-User')
+    return localStorage.getItem('userId')
   }
+
+  getUser(id:string): Observable<User[]> {
+    const userId = this.getUserId();
+    return this.http.get<User[]>(
+    `${environment.appUrl}/users/${id}.json`
+    );
+  }
+ 
 
 
   setToken(token: string): void {
@@ -84,33 +132,12 @@ export class UserService {
   clearUserId() {
     localStorage.removeItem("userId");
   }
-
-
-
-  register(data:any){
-    
-    const {username,email,telephone,passGroup} = data
-    this.afAuth.createUserWithEmailAndPassword(email,passGroup.password)
-      .then((userCredential) => {
-        // User successfully registered.
-        this.user = {
-          email:userCredential.user?.email,
-        }
-        localStorage.setItem(this.USER_KEY,JSON.stringify(this.user));
-        console.log('Registered:', userCredential);
-        return this.user;
-      
-      })
-      .catch((error) => {
-        // Handle registration error.
-        console.error('Registration error:', error);
-      });
-  }
-
+  
   logout() {
     this.user = undefined;
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
+    localStorage.clear()
     return this.afAuth.signOut();
   }
   getAllProfile():Observable<User[]> {

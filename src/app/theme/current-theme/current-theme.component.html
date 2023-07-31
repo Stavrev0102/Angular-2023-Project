@@ -17,17 +17,16 @@
               <app-loader/>
             </div>
           <h3>
-            <!-- Link to User Profile Details Page -->
             <p>
               
               <!-- User's username -->
-              MayaM
+              Username:{{currentUser.username}}
             </p>
             <!-- photo's location -->
-            <span>{{currentAnimal.location}}</span>
+            <span>Location {{currentAnimal.location}}</span>
 
             <!-- IF the viewer is the creator of the photo -->
-            <div *ngIf="isLoggedIn" class="edit-delete-btns">
+            <div *ngIf="isOwner" class="edit-delete-btns">
               <!-- Edit Pet Photo -->
               <a href="#">
                 <img
@@ -55,10 +54,10 @@
         <!-- Pet Photo -->
         <img src={{currentAnimal.img}} alt="post" class="cover" />
       </div>
-
+      <p>Breed -> {{currentAnimal.breed}}</p>
       <div class="bottom">
         <p class="message">
-          <b class="petDescription">{{currentAnimal?.description}}!</b>
+          <b class="petDescription">Description {{currentAnimal?.description}}!</b>
         </p>
 
         <!-- Photo description -->
