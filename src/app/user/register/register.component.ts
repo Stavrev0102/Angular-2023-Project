@@ -37,11 +37,11 @@ export class RegisterComponent {
     //private authService:AuthService
   ) {}
     id:string = '';
+    posts:any
 
   async register() {
     if(this.form.invalid) return
     const data = this.form.value
-
     const userData = await this.userService.register(data);
     this.userService.saveUserData(
       userData.user?.uid,

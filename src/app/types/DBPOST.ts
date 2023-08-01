@@ -3,6 +3,7 @@ export interface DBPOST{
     age:string,
     description:string,
     location:string,
-    img:string
+    img:string,
+    id:string | undefined
 }
 //yes

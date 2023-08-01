@@ -32,3 +32,14 @@
 .user-email {
     color: #777;
 }
+.not-available-photo {
+    text-align: center;
+    font-size: 24px;
+    margin: 100px;
+    background-color: #ffdeefd2;
+  }
+  
+  .not-available-photo h1 {
+    border: 1px solid black;
+    padding: 30px;
+  }

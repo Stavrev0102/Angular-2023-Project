@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,9 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class ProfileComponent implements OnInit {
   isLoading:boolean = true;
   currentUser:any = [];
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, public angularFireAuth: AngularFireAuth) {}
+  postsArray:any = [];
+  posts:any = []
+  constructor(private apiService:ApiService,private userService: UserService, private activatedRoute: ActivatedRoute, public angularFireAuth: AngularFireAuth) {}
   ngOnInit(): void {
     this.profileInfo();
     this.isLoading = false
@@ -20,24 +23,14 @@ export class ProfileComponent implements OnInit {
    
   profileInfo():void{
     const id = (this.activatedRoute.snapshot.params['id']);
-    console.log(id);
-    
-    // const userId = this.userService.getUserId()
-    // console.log(userId);
     this.userService.getUser(id).subscribe((res) => {
       this.currentUser = res;
-    })
-  
+         this.apiService.getAll().subscribe((posts) => {
+          this.postsArray = posts.filter((x) => x.owner_id == id);
+          console.log(this.postsArray);
+         });
+    });
     
-    
-    
-    // this.userService.getProfileById(userId).subscribe({
-    //   next:(current) => {
-    //     this.currentUser = current
-    //     console.log(this.currentUser);
-        
-    //   }
-    // });
-  
-  }
+  };
 }
+

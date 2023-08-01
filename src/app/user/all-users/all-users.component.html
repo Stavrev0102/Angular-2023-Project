@@ -9,8 +9,14 @@
             <img src="/assets/profile.png" alt="Profile Picture" class="user-avatar">
             <span>
                 <a [routerLink]="['/all-users', user.id]" class="user-email">{{user.email}}</a>
-            
             </span>
         </li>
     </ul>
+    <div *ngIf="usersArray.length === 0">
+        <article class="not-available-photo">
+          <h1>No users yet.</h1>
+        </article>
+        <!--If there are no photo yet!-->
+      </div>
+   
 </body>

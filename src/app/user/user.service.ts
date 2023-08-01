@@ -39,13 +39,13 @@ export class UserService {
     uid: any,
     username: any,
     email: any,
-    telephone:any
+    telephone:any,
   ): void {
     const userData = {
       username,
       email,
       telephone,
-  
+      posts:{}
     };
 
     this.afDb.database

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
@@ -13,23 +14,21 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./new-theme.component.css'],
 })
 export class NewThemeComponent {
-  constructor(private apiService:ApiService,private router:Router,private userService:UserService) {}
+  constructor(private afDB:AngularFireDatabase ,private apiService:ApiService,private router:Router,private userService:UserService) {}
   currentUser:any
-  
+  themeId:any
   createPost(form:NgForm){
    const id = this.userService.getUserId()
-    const currentUser = this.apiService.getCurrentUser().subscribe({
-      next:(res) => {console.log(res);
-      
-      },
-      error:(err) => {console.log(err);
-      }
-    })
     this.apiService.postAnimal(form,id).subscribe({
       next:(res:DBPOST) => {
+        this.themeId = res.id;
+       this.afDB.database.ref(`users/${id}/posts/${this.themeId}`).set(true); 
+      },
+      error(err) {
+        console.log(err);
         
       }
-    })
+    });
     this.router.navigate(['/'])
     
   }

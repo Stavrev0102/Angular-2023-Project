@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { MainComponent } from './main/main.component';
 import { ThemeListComponent } from './theme-list/theme-list.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { SharedModule } from './shared/shared.module';
@@ -33,7 +32,6 @@ const INTERCEPTOR_PROVIDER: Provider = {
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
     ThemeListComponent,
     HomeComponent,
     NotFoundComponent,

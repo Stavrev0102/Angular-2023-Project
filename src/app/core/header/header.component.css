@@ -25,8 +25,8 @@ body {
   align-items: center;
   justify-content: center;
   background-color: black;
-  width: 100%;
-  border: 1px solid rgb(218, 217, 217);
+  /* width: 100%; */
+  /* border: 1px solid rgb(218, 217, 217); */
 }
 
 .container {
