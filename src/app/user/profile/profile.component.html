@@ -30,7 +30,7 @@
           <div class="profile-card-inf__txt">Following</div>
         </div>
         <div class="profile-card-inf__item">
-          <div class="profile-card-inf__title">0</div>
+          <div class="profile-card-inf__title">{{postsArray.length}}</div>
           <div class="profile-card-inf__txt">Posts</div>
         </div>
       </div>
@@ -38,10 +38,12 @@
       <div class="profile-card-social" *ngIf="postsArray.length == 0">
         <h1>No post from this user</h1>
       </div>
-      <div *ngFor="let post of postsArray" class="profile-card-social">
-        <a [routerLink]="['/themes',post.id]" class="profile-card-social__item instagram">
-          <img class="img" src="assets/person.png" alt="img">
-        </a>
+      <div class="profile-card-social">
+        <div *ngFor="let post of postsArray">
+          <a [routerLink]="['/themes',post.id]" class="profile-card-social__item instagram">
+            <img class="img" src="{{ post.img }}" alt="img">
+          </a>
+        </div>
       </div>
 
       <div class="profile-card-ctr">

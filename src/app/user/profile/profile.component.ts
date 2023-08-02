@@ -13,8 +13,9 @@ export class ProfileComponent implements OnInit {
   isLoading:boolean = true;
   currentUser:any = [];
   postsArray:any = [];
-  posts:any = []
-  constructor(private apiService:ApiService,private userService: UserService, private activatedRoute: ActivatedRoute, public angularFireAuth: AngularFireAuth) {}
+  posts:any = [];
+  id:any
+  constructor( private route : ActivatedRoute,private apiService:ApiService,private userService: UserService, private activatedRoute: ActivatedRoute, public angularFireAuth: AngularFireAuth) {}
   ngOnInit(): void {
     this.profileInfo();
     this.isLoading = false
@@ -22,11 +23,18 @@ export class ProfileComponent implements OnInit {
 
    
   profileInfo():void{
-    const id = (this.activatedRoute.snapshot.params['id']);
-    this.userService.getUser(id).subscribe((res) => {
+    this.id = (this.activatedRoute.snapshot.params['id']);
+    if(this.id === undefined){
+      console.log('razlichno');  
+      this.id = this.userService.getUserId()
+    } else {
+      console.log('ednakwo');
+    }
+    
+    this.userService.getUser(this.id).subscribe((res) => {
       this.currentUser = res;
          this.apiService.getAll().subscribe((posts) => {
-          this.postsArray = posts.filter((x) => x.owner_id == id);
+          this.postsArray = posts.filter((x) => x.owner_id == this.id);
           console.log(this.postsArray);
          });
     });
