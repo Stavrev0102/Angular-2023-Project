@@ -24,18 +24,11 @@ export class ProfileComponent implements OnInit {
    
   profileInfo():void{
     this.id = (this.activatedRoute.snapshot.params['id']);
-    if(this.id === undefined){
-      console.log('razlichno');  
-      this.id = this.userService.getUserId()
-    } else {
-      console.log('ednakwo');
-    }
-    
+    if(this.id === undefined) this.id = this.userService.getUserId()
     this.userService.getUser(this.id).subscribe((res) => {
       this.currentUser = res;
          this.apiService.getAll().subscribe((posts) => {
           this.postsArray = posts.filter((x) => x.owner_id == this.id);
-          console.log(this.postsArray);
          });
     });
     

@@ -25,7 +25,6 @@ export class ThemeListComponent implements OnInit, OnDestroy {
     next:((res) => {
       this.animalList = res.reverse();
       this.isLoading = false;  
-      
     })
   });
 

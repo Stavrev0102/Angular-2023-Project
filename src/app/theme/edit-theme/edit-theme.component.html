@@ -1,0 +1,101 @@
+<main>
+    <div class="createPage">
+      <h2>Edit photo</h2>
+      <form #form="ngForm" (ngSubmit)="editPost(form)">
+        <p>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            ngModel
+            #inputName="ngModel"
+            required
+            [(ngModel)]="currentAnimal.name"
+          />
+          <ng-container *ngIf="inputName.touched">
+            <p class="error" *ngIf="inputName?.errors?.['required']"> Name is required.</p>
+          </ng-container>
+        </p>
+        <p>
+          <input
+            type="number"
+            name="age"
+            placeholder="Age"
+            #inputAge="ngModel"
+            ngModel
+            required
+            [(ngModel)]="currentAnimal.age"
+          />
+          <ng-container *ngIf="inputAge.touched">
+            <p class="error" *ngIf="inputAge?.errors?.['required']"> Age is required.</p>
+          </ng-container>
+        </p>
+  
+        <p>
+          <textarea
+            type="text"
+            name="description"
+            placeholder="Description"
+            ngModel
+            #inputDescription="ngModel"
+            minlength="10"
+            required
+            [(ngModel)]="currentAnimal.description"
+          ></textarea>
+          <ng-container *ngIf="inputDescription.touched">
+            <p class="error" *ngIf="inputDescription?.errors?.['required']"> Description is required.</p>
+            <p class="error" *ngIf="inputDescription?.errors?.['minlength']">
+              Description should not be less than 10!
+            </p>
+          </ng-container>
+        </p>
+  
+        <p>
+          <input
+            type="text"
+            name="location"
+            placeholder="Location"
+            ngModel
+            #inputLocation="ngModel"
+            required
+            [(ngModel)]="currentAnimal.location"
+          />
+          <ng-container *ngIf="inputLocation.touched">
+            <p class="error" *ngIf="inputLocation?.errors?.['required']"> Location is required.</p>
+          </ng-container>
+        </p>
+        <p>
+          <input
+            type="text"
+            name="breed"
+            placeholder="Breed"
+            ngModel
+            #inputBreed="ngModel"
+            required
+            [(ngModel)]="currentAnimal.breed"
+          />
+          <ng-container *ngIf="inputBreed.touched">
+            <p class="error" *ngIf="inputLocation?.errors?.['required']"> Breed is required.</p>
+          </ng-container>
+        </p>
+  
+        <p>
+          <input
+            type="text"
+            name="img"
+            placeholder="Link to image"
+            #inputImg="ngModel"
+            ngModel
+            required
+            [(ngModel)]="currentAnimal.img"
+          />
+          <ng-container *ngIf="inputImg.touched">
+            <p class="error" *ngIf="inputImg?.errors?.['required']"> Image is required.</p>
+          </ng-container>
+        </p>
+        <!-- Add Photo Button -->
+        <button class="edit-btn">Edit Photo</button>
+      </form>
+    </div>
+  </main>
+  

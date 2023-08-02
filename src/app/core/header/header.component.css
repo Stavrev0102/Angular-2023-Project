@@ -1,5 +1,9 @@
 
 
+
+
+
+
 @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
 
 * {
@@ -25,13 +29,14 @@ body {
   align-items: center;
   justify-content: center;
   background-color: black;
-  /* width: 100%; */
-  /* border: 1px solid rgb(218, 217, 217); */
+  min-width: 100vw;
+  margin-right: 5em;
+  margin-left: -3vw;
 }
 
 .container {
   padding: 15px 0;
-  width: 75%;
+  width: 91%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,7 +73,6 @@ body {
 .nav-links {
   font-weight: lighter;
   color: rgb(172, 172, 172);
-  /* background: #333 ; */
 }
 
 .nav-group .nav-item {
@@ -113,3 +117,7 @@ body {
   text-decoration-color:white ;
 }
   
+app-header{
+  min-width: 100vw;
+  margin: 0 auto;
+}

@@ -23,7 +23,7 @@ export class CurrentThemeComponent implements OnInit {
   isLoading: boolean = true;
   ownerId: any = [];
   isOwner: boolean = false;
-
+  id:string = ''
   ngOnInit(): void {
     this.fetchTheme();
   }
@@ -33,9 +33,9 @@ export class CurrentThemeComponent implements OnInit {
   }
 
   fetchTheme(): void {
-    const id: string = this.activatedRoute.snapshot.params["themeId"];
+     this.id = this.activatedRoute.snapshot.params["themeId"];
     const currentId = this.userService.getUserId();
-    this.apiService.getAnimal(id).subscribe({
+    this.apiService.getAnimal(this.id).subscribe({
       next: (res) => {
         this.currentAnimal = res;
 
@@ -54,9 +54,13 @@ export class CurrentThemeComponent implements OnInit {
   }
 
 
-  deleteAnimal(): void {
+  deleteAnimal(name:string): void {
     const id: string = this.activatedRoute.snapshot.params["themeId"];
-    console.log(this.apiService.delAnimal(id).subscribe());
-    this.router.navigate(["/"]);
+    if(confirm(`Are you sure to delete ${name}`)) {
+      console.log(`Implement delete functionality here`);
+      console.log(this.apiService.delAnimal(id).subscribe());
+      this.router.navigate(["/"]);
+    } 
+    return
   }
 }

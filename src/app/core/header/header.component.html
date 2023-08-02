@@ -1,81 +1,71 @@
-  
 
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <!-- Link to Home Page -->
-                <a href="#">
-                    <img width="50px" src="/assets/free-30-instagram-stories-icons23_122570.png" alt="img1">
-                </a>
 
-                <!-- Link to Home Page -->
-                <a class="home" href="#">
-                    <i>Petstagram</i>
-                </a>
-            </div>
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">
+      <a href="#">
+        <img
+          width="50px"
+          src="/assets/free-30-instagram-stories-icons23_122570.png"
+          alt="img1"
+        />
+      </a>
 
-            <div class="nav-links">
-                <ul class="nav-group">
-                    <ul *ngIf="!isLoggedIn" class="nav-group">
+      <a class="home" href="#">
+        <i>Petstagram</i>
+      </a>
+    </div>
 
-                      <li class="nav-item">
-                        <!-- Link to Catalog Page -->
-                        <a routerLink="/themes">
-                            <i>Catalog</i>
-                        </a>
-                    </li>
-                      <li class="nav-item">
-                        <!-- Link to Login Page -->
-                        <a routerLink="/login">
-                            <i>Login</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- Link to Register Page -->
-                        <a routerLink="/register">
-                            <i>Register</i>
-                        </a>
-                    </li>
-                    </ul>
-                    <ul *ngIf="isLoggedIn" class="nav-group">
-                        <li class="nav-item">
-                            <!-- Link to Catalog Page -->
-                            <a routerLink="/themes">
-                                <i>Catalog</i>
-                            </a>
-                        </li>
+    <div class="nav-links">
+      <ul class="nav-group">
+        <ul *ngIf="!isLoggedIn" class="nav-group">
+          <li class="nav-item">
+            <a routerLink="/themes">
+              <i>Catalog</i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/login">
+              <i>Login</i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/register">
+              <i>Register</i>
+            </a>
+          </li>
+        </ul>
+        <ul *ngIf="isLoggedIn" class="nav-group">
+          <li class="nav-item">
+            <a routerLink="/themes">
+              <i>Catalog</i>
+            </a>
+          </li>
 
-                      <li class="nav-item">
-                        <!-- Link to Add Photo Page -->
-                        <a routerLink="add-theme">
-                            <i>Add Photo</i>
-                        </a>
-                    </li>
+          <li class="nav-item">
+            <a routerLink="add-theme">
+              <i>Add Photo</i>
+            </a>
+          </li>
 
-                    <li class="nav-item">
-                        <!-- Link to Profile Page -->
-                        <a [routerLink]="['/profile']">
-                            <i>Profile</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- Link to Catalog Page -->
-                        <a routerLink="/all-users">
-                            <i>All profiles</i>
-                        </a>
-                    </li>
+          <li class="nav-item">
+            <a [routerLink]="['/profile']">
+              <i>Profile</i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/all-users">
+              <i>All profiles</i>
+            </a>
+          </li>
 
-                    <li class="nav-item-logout">
-                        <!-- Link to Logout Page -->
-                        <a (click)="logout()">
-                            <i>Logout</i>
-                        </a>
-                    </li>
-                    </ul>
-            
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-  
+          <li class="nav-item-logout">
+            <a (click)="logout()">
+              <i>Logout</i>
+            </a>
+          </li>
+        </ul>
+      </ul>
+    </div>
+  </div>
+</nav>

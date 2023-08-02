@@ -21,9 +21,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
      this.id = this.userService.getUserId();
-     console.log(this.id); 
-     this.idi = (this.activatedRoute.snapshot.params['id']);   
-     console.log(this.idi);
      
   }
 

@@ -53,6 +53,12 @@ export class ApiService {
       }
     }))
   }
+  editAnimal(form:NgForm,id:string | null,currentUserId:string | null):Observable<Post> {
+    const data = form.value;
+    data.owner_id = currentUserId
+    const { appUrl } = environment;
+    return this.http.put<Post>(`${appUrl}/animals/${id}/.json`,data)
+  } 
 
   delAnimal(id:string):Observable<any>{
     const { appUrl } = environment;

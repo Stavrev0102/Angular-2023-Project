@@ -5,6 +5,7 @@ import { CurrentThemeComponent } from './current-theme/current-theme.component';
 import { ThemeRoutingModule } from './theme-routing.module';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { EditThemeComponent } from './edit-theme/edit-theme.component';
 
 
 
@@ -14,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     NewThemeComponent,
     CurrentThemeComponent,
+    EditThemeComponent,
   ],
   imports: [
     CommonModule,

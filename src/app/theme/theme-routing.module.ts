@@ -6,6 +6,7 @@ import { AuthActivate } from '../core/guards/auth.activate';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { AuthGuard } from '../auth/auth-guard.guard';
 import { ThemeListComponent } from '../theme-list/theme-list.component';
+import { EditThemeComponent } from './edit-theme/edit-theme.component';
 //import { NotFoundComponent } from '../not-found/not-found.component';
 
 const routes: Routes = [
@@ -29,7 +30,17 @@ const routes: Routes = [
     path: 'add-theme',
     component: NewThemeComponent,
     canActivate:[AuthGuard],
-
+  },
+  {
+    path:'edit-theme',
+    children:[
+      {
+      path:':themeId',
+      component:EditThemeComponent,
+      canActivate:[AuthGuard]
+      }
+    ]
+    
   }
 ];
 

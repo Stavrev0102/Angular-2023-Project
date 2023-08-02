@@ -17,6 +17,7 @@ export class NewThemeComponent {
   constructor(private afDB:AngularFireDatabase ,private apiService:ApiService,private router:Router,private userService:UserService) {}
   currentUser:any
   themeId:any
+  
   createPost(form:NgForm){
    const id = this.userService.getUserId()
     this.apiService.postAnimal(form,id).subscribe({
