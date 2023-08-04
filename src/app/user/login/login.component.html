@@ -53,6 +53,12 @@
         [style]="{backgroundColor:form.invalid ? 'red' : 'blue'}">
           LogIn
         </button>
+        <ng-container *ngIf="incorrrectData">
+          <p class="error">
+                  Incorrect Email or Password!
+              </p>
+            
+        </ng-container>
       </form>
     </div>
     <div class="second-option">

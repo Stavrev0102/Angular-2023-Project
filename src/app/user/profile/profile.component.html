@@ -7,7 +7,7 @@
     </div>
 
     <div class="profile-card__cnt js-profile-cnt">
-      <div class="profile-card__name"> Username: {{currentUser.username}}</div>
+      <div class="profile-card__name">  {{currentUser.username}}</div>
       <div class="profile-card__txt">Email: {{currentUser.email}}</div>
       <div class="profile-card-loc">
         <span class="profile-card-loc__icon">
@@ -48,7 +48,9 @@
 
       <div class="profile-card-ctr">
         <button class="profile-card__button button--blue js-message-btn">Message</button>
-        <button class="profile-card__button button--orange">Follow</button>
+        <ng-container *ngIf="currentId !== id">
+          <button class="profile-card__button button--orange" (click)="follow(currentId)">Follow</button>
+        </ng-container>
       </div>
     </div>
 

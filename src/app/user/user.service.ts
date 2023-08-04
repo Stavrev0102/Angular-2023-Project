@@ -45,7 +45,9 @@ export class UserService {
       username,
       email,
       telephone,
-      posts:{}
+      posts:{},
+      followers:{},
+      following:{},
     };
 
     this.afDb.database
@@ -59,20 +61,25 @@ export class UserService {
       });
   }
 
-
-  async login(form:NgForm): Promise<firebase.default.auth.UserCredential> {
+  //ne se izpolzwa
+  async login(form:NgForm){
     const currentForm = form.value
      const {email,password} = form.value
-
-    const userData = await this.afAuth.signInWithEmailAndPassword(email,password)
-    if (userData && ( userData).user) {
-      const { uid } = userData.user;
-      this.setUserId(uid);
-      const token = await userData.user.getIdToken();
-      this.setToken(token);
-    }
-    
-    return userData;
+      try {
+        const userData = await this.afAuth.signInWithEmailAndPassword(email,password)
+        if (userData && ( userData).user) {
+          const { uid } = userData.user;
+          this.setUserId(uid);
+          const token = await userData.user.getIdToken();
+          this.setToken(token);
+        }
+        return userData;
+      } catch (error) {
+        console.log(error);
+        
+        return 
+      }
+   
    
   }
 

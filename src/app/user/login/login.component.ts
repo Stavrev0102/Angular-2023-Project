@@ -17,12 +17,25 @@ export class LoginComponent {
     private afAuth: AngularFireAuth
   ) {}
   appEmailDomains = DEFAULT_EMAIL_DOMAINS;
-  login(form: NgForm): void {
-    if (form.invalid) return;
-    this.userService.login(form);
-    
-    console.log('done');
-    
-    this.router.navigate(["/"]);
+  incorrrectData:boolean  = false
+  async login(form:NgForm){
+    const currentForm = form.value
+     const {email,password} = form.value
+      try {
+        const userData = await this.afAuth.signInWithEmailAndPassword(email,password)
+        if (userData && ( userData).user) {
+          const { uid } = userData.user;
+          this.userService.setUserId(uid);
+          const token = await userData.user.getIdToken();
+          this.userService.setToken(token);
+        }
+        this.router.navigate(['/themes'])
+        return userData;
+      } catch (error:any) {
+        this.incorrrectData = true
+        return 
+      }
+   
+   
   }
 }

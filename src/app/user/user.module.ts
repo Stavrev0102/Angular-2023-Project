@@ -15,7 +15,7 @@ import { AllUsersComponent } from './all-users/all-users.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    AllUsersComponent
+    AllUsersComponent,
   ],
   imports: [
     CommonModule,UserRoutingModule,SharedModule,FormsModule,ReactiveFormsModule,
