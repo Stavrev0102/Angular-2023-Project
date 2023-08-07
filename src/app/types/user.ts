@@ -4,6 +4,8 @@ export interface User {
     id:string | undefined
     tel:string;
     username:string;
-    posts:[id:string | undefined]
+    posts:[id:string | undefined];
+    followers:{};
+    messages:[];
   }
   //yes

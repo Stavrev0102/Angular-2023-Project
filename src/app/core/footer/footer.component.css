@@ -2,11 +2,8 @@
 
 .footer {
     text-align: center;
-    margin-bottom: 20px;
-    margin-right: -2vw;
-    margin-left: -8vw;
     background-color: black;
-    min-width: 100vw;
+    padding: 1em;
   }
   
   .footer .footer-section {

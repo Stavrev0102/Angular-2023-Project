@@ -32,7 +32,7 @@ export class CurrentThemeComponent implements OnInit {
     return this.userService.isLogged;
   }
 
-  fetchTheme(): void {
+  fetchTheme(): void { 
      this.id = this.activatedRoute.snapshot.params["themeId"];
     const currentId = this.userService.getUserId();
     this.apiService.getAnimal(this.id).subscribe({

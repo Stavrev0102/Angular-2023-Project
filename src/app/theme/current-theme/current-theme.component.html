@@ -2,7 +2,7 @@
 <div *ngIf="isLoading">
   <app-loader/>
 </div>
-<div class="profile">
+<div *ngIf="!isLoading" class="profile">
   <a [routerLink]="['/all-users', currentAnimal.owner_id]">
     <div class="profilepic">
       <div class="profile_img">
@@ -13,7 +13,7 @@
     </div>
   </a>
 
-<div class="animal-card">
+<div *ngIf="!isLoading" class="animal-card">
   <div class="owner">
     <span>Owner: {{currentUser.username}}</span>
   </div>
@@ -34,118 +34,4 @@
   </p>
 </div>
 </div>
-
-
-
-
-
-<!-- <div class="container">
-  <div class="col-9">
-    <div class="top">
-      <div class="userDetails">
-        <div class="profilepic">
-          <div class="profile_img">
-            <div class="image">
-              <img src="/assets/person.png" alt="Profile Image" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <h3>
-          <p class="username">{{ currentUser.username }}</p>
-          <span class="location">Location: {{ currentAnimal.location }}</span>
-          <div *ngIf="isOwner" class="edit-delete-btns">
-            <button class="edit-btn">
-              <a href="#">
-                <img class="edit-img" src="/assets/edit.png" alt="Edit Button" />
-              </a>
-            </button>
-          
-            <button class="del-btn" (click)="deleteAnimal(currentAnimal.name)">
-              <img class="bin-img" src="/assets/icon-remove-22.png" alt="Delete Button" />
-            </button>
-          </div>
-        </h3>
-      </div>
-    </div>
-
-    <div class="imgBx">
-      <img src="{{ currentAnimal.img }}" alt="Pet Photo" class="cover" />
-    </div>
-    <p class="breed">Breed: {{ currentAnimal.breed }}</p>
-    <div class="bottom">
-      <p class="message">
-        <b class="petDescription">{{ currentAnimal?.description }}</b>
-      </p>
-      <div class="pet-details">
-        <p class="petName">Name: {{ currentAnimal?.name }}</p>
-        <p class="petAge">Age: {{ currentAnimal?.age }}</p>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- <div class="container">
-  <div class="col-9">
-      <div class="top">
-        <div class="userDetails">
-          <div>
-            <div class="profilepic">
-              <div class="profile_img">
-                <div class="image">
-                  <img src="/assets/person.png" alt="img8" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            
-          <h3>
-            <p>
-              
-              Username:{{currentUser.username}}
-            </p>
-            <span>Location {{currentAnimal.location}}</span>
-
-            <div *ngIf="isOwner" class="edit-delete-btns">
-              <a href="#">
-                <img
-                  class="edit-img"
-                  src="/assets/edit-pen-icon-6.jpg"
-                  alt="edit button"
-                />
-              </a>
-
-              <button class="del-btn" (click)="deleteAnimal(currentAnimal.name)">
-                <img
-                  class="bin-img"
-                  src="/assets/icon-remove-22.jpg"
-                  alt="bin button"
-                />
-              </button>
-            </div>
-          </h3>
-        </div>
-      </div>
-
-      <div class="imgBx">
-        <img src={{currentAnimal.img}} alt="post" class="cover" />
-      </div>
-      <p>Breed -> {{currentAnimal.breed}}</p>
-      <div class="bottom">
-        <p class="message">
-          <b class="petDescription">Description {{currentAnimal?.description}}!</b>
-        </p>
-
-    
-        <div class="pet-details">
-          <p class="petName">Name: {{currentAnimal?.name}}</p>
-          <p class="petAge">Age: {{currentAnimal?.age}}</p>
-        </div>
-      </div>
-    
-    </div>
-  </div>
-</div> -->
 </main>

@@ -29,9 +29,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: black;
-  min-width: 100vw;
-  margin-right: 5em;
-  margin-left: -3vw;
+ 
 }
 
 .container {

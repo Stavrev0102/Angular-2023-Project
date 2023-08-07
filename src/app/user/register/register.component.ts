@@ -41,6 +41,7 @@ export class RegisterComponent {
 
   async register() {
     if(this.form.invalid) return
+    
     const data = this.form.value
     const userData = await this.userService.register(data);
     this.userService.saveUserData(

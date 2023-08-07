@@ -1,0 +1,30 @@
+
+<div class="chat-container">
+    <div class="chat-header">
+      <h2>Chat Room</h2>
+    </div>
+    <div class="chat-messages">
+      <div class="message" *ngFor="let message of messages">
+        <div class="message-profile">
+          <img src="assets/profile.png" alt="User Profile" />
+          <a  [routerLink]="['/']" target="_blank"></a>
+        </div>
+        <div class="message-text">{{ message.message }}</div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input [(ngModel)]="newMessage" placeholder="Type your message" />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+
+
+
+<!-- <div class="popup-chat">
+    <div *ngFor="let message of messages" class="message">
+      {{ message.message }}
+    </div>
+    <input [(ngModel)]="newMessage" placeholder="Type your message" />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+   -->
