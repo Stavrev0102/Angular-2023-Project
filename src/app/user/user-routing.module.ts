@@ -6,7 +6,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthActivate } from '../core/guards/auth.activate';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { AuthGuard } from '../auth/auth-guard.guard';
-import { ChatsComponent } from './chats/chats.component';
 
 
 const routes: Routes = [
@@ -41,11 +40,7 @@ const routes: Routes = [
     ],
     canActivate: [AuthGuard],
   },
-  {
-    path:'chats/:id',
-    component:ChatsComponent
-  }
-
+  
   
   
 ];
