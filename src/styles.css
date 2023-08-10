@@ -33,6 +33,14 @@ body, form, input, textarea, option, select, button {
 .wrapper app-footer{
     margin-top: auto;
 }
+app-search{
+  background-image: url('assets/dog-search.png'); 
+    background-position: top;
+}
+app-new-theme{
+    background-image: url('assets/add-photo.png');
+    background-position: top;
+}
 
 
 /* Handle responsiveness */

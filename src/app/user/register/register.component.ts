@@ -5,9 +5,6 @@ import { FormBuilder, NgForm, Validators } from "@angular/forms";
 import { matchPasswordValidator } from "src/app/shared/validators/match-password-validator";
 import { appEmailValidator } from "src/app/shared/validators/app-email-validator";
 import { DEFAULT_EMAIL_DOMAINS } from "src/app/shared/constants";
-import { Register } from "src/app/types/register";
-import { AngularFireAuth } from "@angular/fire/compat/auth";
-//import { AuthService } from "src/app/auth/auth.service";
 
 @Component({
   selector: "app-register",
@@ -34,15 +31,12 @@ export class RegisterComponent {
     private userService: UserService,
     private router: Router,
     private fb: FormBuilder,
-    private afAuth: AngularFireAuth
-    //private authService:AuthService
   ) {}
-    id:string = '';
-    posts:any
+    incorrrectData:boolean  = false
 
-  async register() {
+  async register(){
     if(this.form.invalid) return
-    
+    try {
     const data = this.form.value
     const userData = await this.userService.register(data);
     this.userService.saveUserData(
@@ -52,9 +46,15 @@ export class RegisterComponent {
       data.telephone,
       data.gender
     );
-
     this.router.navigate(["/themes"]);
-  } 
+    } catch (error:any) {
+      if(error.message.includes('email')){
+        this.incorrrectData = true
+      }
+      console.log(error.message);
+      
+    }
+   } 
   }
 
  

@@ -100,6 +100,11 @@
         [style]="{backgroundColor:form.invalid ? 'red' : 'blue'}">
           Register
         </button>
+        <ng-container *ngIf="incorrrectData">
+          <p class="error">
+              Email already exist! Please enter valid Email!
+              </p>    
+        </ng-container>
       </form>
     </div>
     <div class="second-option">

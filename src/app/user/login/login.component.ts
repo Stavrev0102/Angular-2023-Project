@@ -17,7 +17,8 @@ export class LoginComponent {
     private afAuth: AngularFireAuth
   ) {}
   appEmailDomains = DEFAULT_EMAIL_DOMAINS;
-  incorrrectData:boolean  = false
+  incorrrectData:boolean  = false;
+  
   async login(form:NgForm){
     const currentForm = form.value
      const {email,password} = form.value

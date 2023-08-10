@@ -10,12 +10,11 @@ import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
 import { ThemeModule } from './theme/theme.module';
-
+import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+
 import { NotFoundComponent } from './not-found/not-found.component';
 import { environment1 } from 'src/environments/environment';
 import { AuthInterceptor } from './auth/auth.interceptor';
@@ -24,7 +23,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AuthGuardEdit } from './auth/edit-guard.guard';
 import { idGuard } from './auth/id.guard';
 import { ThemeGuard } from './auth/theme.guard';
-//import { AuthInterceptor } from './auth/auth.interceptor';
+import { SearchComponent } from './search/search.component';
 
 
 const INTERCEPTOR_PROVIDER: Provider = {
@@ -39,6 +38,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     ThemeListComponent,
     HomeComponent,
     NotFoundComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +51,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     SharedModule,
     ThemeModule,
     AppRoutingModule,
+    FormsModule,
    
   ],
   providers: [INTERCEPTOR_PROVIDER,AuthGuard,AuthGuardEdit,ThemeGuard,idGuard],

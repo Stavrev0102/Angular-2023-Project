@@ -7,7 +7,6 @@ import { AuthActivate } from '../core/guards/auth.activate';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { AuthGuard } from '../auth/auth-guard.guard';
 import { ChatComponent } from './chat/chat.component';
-import { NotFoundComponent } from '../not-found/not-found.component';
 import { idGuard } from '../auth/id.guard';
 
 
@@ -15,7 +14,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    //canActivate: [AuthActivate],
   },
   {
     path: 'register',

@@ -15,7 +15,6 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     RouterModule
   ],
-  //which components are exporting from this module
   exports:[
     HeaderComponent,
     FooterComponent

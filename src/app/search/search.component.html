@@ -1,0 +1,25 @@
+
+<div class="search-page">
+  <h2>Find your friends!</h2>
+  <div class="search-container">
+    <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearchInputChange()">
+    <ul class="results-list">
+      <li *ngFor="let result of searchResults">
+        <div class="user-card">
+          
+            <div class="user-avatar">
+              <img *ngIf="result.gender === 'Male'" src="assets/profile.png" alt="">
+              <img *ngIf="result.gender === 'Female'" src="assets/fem.png" alt="">
+              <img *ngIf="result.gender === 'Other'" src="assets/other.png" alt="">
+            </div>
+            <div class="user-info">
+              <a [routerLink]="['/all-users', result.id]">
+              <h3>{{ result.username }}</h3>
+              <p>{{ result.email }}</p>
+            </a>
+            </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

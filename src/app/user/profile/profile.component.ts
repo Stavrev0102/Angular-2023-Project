@@ -4,10 +4,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { UserService } from "../user.service";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { ApiService } from "src/app/api.service";
-import { User } from "src/app/types/user";
-import { AngularFireDatabase } from "@angular/fire/compat/database";
-import { Observable, Subject } from "rxjs";
+import { Subject } from "rxjs";
 import { takeUntil, switchMap } from 'rxjs/operators';
+import { Animal } from "src/app/types/animal";
 
 @Component({
   selector: "app-profile",
@@ -17,12 +16,11 @@ import { takeUntil, switchMap } from 'rxjs/operators';
 export class ProfileComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
   currentUser: any = [];
-  postsArray: any = [];
-  posts: any = [];
-  id: any;
-  currentId: any = [];
-  followers: any[] = [];
-  followings:any[] = []
+  postsArray: Animal[] = [];
+  id: string = '';
+  currentId: any; 
+  followers: string[] = [];
+  followings:string[] = [];
   isFollow: boolean = false;
   private destroy$ = new Subject<void>();
 
@@ -31,7 +29,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     public angularFireAuth: AngularFireAuth,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -101,76 +98,4 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
 
 
-// import { Component, OnInit } from "@angular/core";
-// import { ActivatedRoute, Router } from "@angular/router";
-// import { UserService } from "../user.service";
-// import { AngularFireAuth } from "@angular/fire/compat/auth";
-// import { ApiService } from "src/app/api.service";
-// import { User } from "src/app/types/user";
-// import { AngularFireDatabase } from "@angular/fire/compat/database";
-// import { Observable, Subject } from "rxjs";
 
-
-// @Component({
-//   selector: "app-profile",
-//   templateUrl: "./profile.component.html",
-//   styleUrls: ["./profile.component.css"],
-// })
-// export class ProfileComponent implements OnInit {
-//   isLoading: boolean = true;
-//   currentUser: any = []
-//   postsArray: any = [];
-//   posts: any = [];
-//   id: any;
-//   currentId:any = [];
-//   followers:any[] = [];
-//   isFollow:boolean = false;
-//   following$$ = new Subject<void>
-  
-//   constructor(
-//     private apiService: ApiService,
-//     private userService: UserService,
-//     private activatedRoute: ActivatedRoute,
-//     public angularFireAuth: AngularFireAuth,
-//     private router:Router
-//   ) {}
-//   ngOnInit(): void {
-
-//     this.profileInfo();
-//     this.isLoading = false;
-//   }
-
-//   profileInfo(): void {
-//     this.id = this.activatedRoute.snapshot.params["id"];
-//     this.currentId = this.userService.getUserId();
-
-//     if (this.id === undefined) this.id = this.userService.getUserId();
-//     this.userService.getUser(this.id).subscribe((res) => {
-//       this.currentUser = res;
-//       if(this.currentUser.followers){
-//         this.followers = Object.keys(this.currentUser.followers)
-//         this.isFollow = this.followers.includes(this.currentId); 
-//       };
-//       this.apiService.getAll().subscribe((posts) => {
-//         this.postsArray = posts.filter((x) => x.owner_id == this.id);
-//       });
-//     });
-//   }
-
-   
-
-//   follow(currentUserId:string){
-//     this.id = this.activatedRoute.snapshot.params["id"];
-//     const userId = this.userService.getUserId()
-//     console.log('Current User id -->',currentUserId);
-//     console.log('Profile to follow id -->',this.id);
-//     try {
-//       this.userService.followFunc(currentUserId,this.id);
-//       this.following$$.next();
-//       this.router.navigate([`/all-users/${this.id}`]);
-//     } catch (error) {
-//       console.log(error);
-      
-//     } 
-//   }
-// }

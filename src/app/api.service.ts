@@ -64,8 +64,8 @@ export class ApiService {
     return this.http.put<Post>(`${appUrl}/animals/${id}/.json`,data)
   } 
 
-  delAnimal(id:string):Observable<any>{
+  delAnimal(id:string):Observable<string>{
     const { appUrl } = environment;
-    return this.http.delete(`${appUrl}/animals/${id}/.json`,)
+    return this.http.delete<string>(`${appUrl}/animals/${id}/.json`,)
   }
 }

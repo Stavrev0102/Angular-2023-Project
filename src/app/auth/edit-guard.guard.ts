@@ -4,7 +4,6 @@ import {
   ActivatedRouteSnapshot,
   CanActivate,
   Router,
-  RouterStateSnapshot,
   UrlTree,
 } from "@angular/router";
 import { Observable } from "rxjs";
@@ -24,7 +23,6 @@ export class AuthGuardEdit implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
   ):
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>

@@ -1,0 +1,79 @@
+.search-page {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: top;
+  align-items: center;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+h3{
+  color:black;
+}
+
+.search-container {
+  width: 600px; /* Increased width */
+  margin: 20px auto;
+  padding: 20px; /* Increased padding */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  background-size: cover;
+}
+input[type="text"] {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.results-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+}
+
+.user-card:hover {
+  background-color: rgba(240, 240, 240, 0.8); /* Lighter background on hover */
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-right: 10px;
+  /* You can add more styles for the avatar */
+}
+.user-avatar img {
+  width: 50px;
+  height: 50px;
+}
+
+.user-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.user-info p {
+  margin: 0;
+  color: #888;
+}

@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
   get isLoggedIn(): boolean {
     return this.userService.isLogged;
   }
-  // 
 
   ngOnInit(): void {
      this.id = this.userService.getUserId();
@@ -28,6 +27,6 @@ export class HeaderComponent implements OnInit {
 
   logout():void {
     this.userService.logout();
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
   }
 }
