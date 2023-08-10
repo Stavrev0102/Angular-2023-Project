@@ -1,9 +1,4 @@
-
-
-
-
-
-
+/* /*  */
 @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
 
 * {
@@ -24,17 +19,16 @@ body {
 }
 
 .navbar {
-  
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: black;
- 
+  padding: 10px 0;
 }
 
 .container {
-  padding: 15px 0;
-  width: 91%;
+  padding: 10px 0;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -44,7 +38,7 @@ body {
   color: white;
 }
 
-.nav-item a i{
+.nav-item a i {
   color: white;
   text-decoration: underline;
   text-decoration-color: white;
@@ -62,7 +56,7 @@ body {
 }
 
 .home {
-  font-size: 25px;
+  font-size: 20px;
   margin: 10px 0 0 3px;
   color: white;
   font-family: "Indie Flower", cursive;
@@ -79,7 +73,7 @@ body {
 }
 
 .nav-group .nav-item a {
-  font-size: 22px;
+  font-size: 18px; 
   display: block;
   color: black;
 }
@@ -106,16 +100,100 @@ body {
   height: 100%;
   object-fit: cover;
 }
-.nav-item-logout{
-  font-size: 22px;
+
+.nav-item-logout {
+  font-size: 18px; 
   display: block;
   color: black;
   cursor: pointer;
   text-decoration: underline;
-  text-decoration-color:white ;
+  text-decoration-color: white;
 }
-  
-app-header{
-  min-width: 100vw;
+
+app-header {
+  width: 100%; 
   margin: 0 auto;
+} 
+
+
+
+/* ----- */
+/* Keep your existing styles */
+
+/* Add the following styles for the burger menu */
+.burger {
+  display: none;
+  cursor: pointer;
 }
+
+.burger div {
+  width: 30px;
+  height: 3px;
+  background-color: blue;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+
+i{
+  color: #ddd;
+}
+
+.burger-navigation {
+  display: none;
+  position: absolute;
+  top: 60px; /* Adjust this value based on your design */
+  right: 60px;
+  background-color: wheat;
+  width: 100%;
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.burger.active .burger-navigation {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 720px) {
+  .burger {
+    display: block;
+  }
+  .nav-links{
+    display: none;
+  }
+
+  .burger-navigation li a i{
+    color: black;
+    font-size: 20px;
+    border: solid black;
+  }
+  .burger-navigation{
+    z-index: 999;
+    right: 120px;
+    top: 90px;
+    background-color: black;
+  }
+  
+  .burger-navigation li a{
+    color: black;
+    font-size: 20px;
+    border: solid black;
+    
+  }
+  li{
+    list-style-type: none;
+    
+  }
+  
+}
+
+
+
+
+
+

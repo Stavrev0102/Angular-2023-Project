@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ThemeServiceService {
 
-   isOwnerCheck(ownerId: string, currentId: string | undefined | null): boolean {
+   isOwnerCheck(ownerId: string | undefined, currentId: string | undefined | null): boolean {
     if (ownerId === currentId) {
       return true;
     }

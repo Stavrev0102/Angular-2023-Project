@@ -3,7 +3,9 @@
 <div class="wrapper">
   <div class="profile-card js-profile-card">
     <div class="profile-card__img">
-      <img src="/assets/profile.png" alt="profile card">
+      <img *ngIf="currentUser.gender === 'Male'" src="/assets/profile.png" alt="profile card">
+      <img *ngIf="currentUser.gender === 'Female'" src="/assets/fem.png" alt="profile card">
+      <img *ngIf="currentUser.gender === 'Other'" src="/assets/other.png" alt="profile card">
     </div>
 
     <div class="profile-card__cnt js-profile-cnt">
@@ -47,8 +49,8 @@
       </div>
 
       <div class="profile-card-ctr">
-        <button [routerLink]="['/chats',id]" class="profile-card__button button--blue js-message-btn">Message</button>
         <ng-container *ngIf="currentId !== id">
+          <button [routerLink]="['/chats',id]" class="profile-card__button button--blue js-message-btn">Message</button>
           <button *ngIf="!isFollow" class="profile-card__button button--blue" (click)="follow(currentId)">Follow</button>
           <button *ngIf="isFollow" class="profile-card__button button--orange" (click)="unFollow(currentId,id)">Unfollow</button>
         </ng-container>

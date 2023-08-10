@@ -19,6 +19,7 @@ export class RegisterComponent {
   form = this.fb.group({
     username: ['',[Validators.required,Validators.minLength(5)]],
     email: ["",[Validators.required,appEmailValidator(DEFAULT_EMAIL_DOMAINS)]],
+    gender:[''],
     telephone:['',[Validators.required,Validators.minLength(8)]],
     passGroup: this.fb.group({
         password: ['', [Validators.required, Validators.minLength(8)]],
@@ -49,22 +50,11 @@ export class RegisterComponent {
       data.username,
       data.email,
       data.telephone,
+      data.gender
     );
 
     this.router.navigate(["/themes"]);
   } 
-  //  const currentUser = this.userService.register(data)
-  //  console.log(currentUser)
-   
-    // this.userService.setProfileInRB(data).subscribe({
-    //   next:(res) => {
-    //     const id = Object.values(res).join('');
-    //     localStorage.setItem('DB-User',id)   
-    //   },
-    //   error:(err) => {console.log(err);
-    //   },
-    // })
-    //  this.router.navigate(["/catalog"]);
   }
 
  

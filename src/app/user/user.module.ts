@@ -7,6 +7,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AllUsersComponent } from './all-users/all-users.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -16,6 +17,7 @@ import { AllUsersComponent } from './all-users/all-users.component';
     RegisterComponent,
     ProfileComponent,
     AllUsersComponent,
+    ChatComponent,
   ],
   imports: [
     CommonModule,UserRoutingModule,SharedModule,FormsModule,ReactiveFormsModule,

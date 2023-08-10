@@ -7,6 +7,8 @@ import { NotFoundComponent } from '../not-found/not-found.component';
 import { AuthGuard } from '../auth/auth-guard.guard';
 import { ThemeListComponent } from '../theme-list/theme-list.component';
 import { EditThemeComponent } from './edit-theme/edit-theme.component';
+import { AuthGuardEdit } from '../auth/edit-guard.guard';
+import { ThemeGuard } from '../auth/theme.guard';
 //import { NotFoundComponent } from '../not-found/not-found.component';
 
 const routes: Routes = [
@@ -21,7 +23,7 @@ const routes: Routes = [
       {
         path:':themeId',
         component:CurrentThemeComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard,ThemeGuard],
 
       },
     ], 
@@ -37,7 +39,7 @@ const routes: Routes = [
       {
       path:':themeId',
       component:EditThemeComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard,AuthGuardEdit]
       }
     ]
     

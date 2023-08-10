@@ -41,12 +41,14 @@ export class UserService {
     uid: any,
     username: any,
     email: any,
-    telephone: any
+    telephone: any,
+    gender:any
   ): void {
     const userData = {
       username,
       email,
       telephone,
+      gender,
       posts: {},
       followers: {},
       following: {},
@@ -153,6 +155,10 @@ export class UserService {
         }));
       })
     );
+  }
+  getAllProfiles() {
+    const { appUrl } = environment;
+    return this.http.get(`${appUrl}/users/.json`)
   }
 
   getProfileById(id: string | null): Observable<User> {

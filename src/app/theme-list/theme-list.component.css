@@ -7,6 +7,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 body {
@@ -112,6 +113,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 main .container {
@@ -121,6 +123,7 @@ main .container {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  /* background-image:linear-gradient(-20deg, #ff2846 0%, #6944ff 100%);; */
 }
 
 .col-9 {
@@ -128,14 +131,14 @@ main .container {
   margin: 5% auto;
   margin-bottom: -20px;
   display: inline-block;
- 
+  /* background-image:linear-gradient(-20deg, #ff2846 0%, #6944ff 100%);; */
 }
 
 .col-9 .card {
   margin-bottom: 20px;
   position: relative;
   width: 100%;
-  
+  background: white;
   border: 1px solid rgba(7, 7, 7, 0.24);
   
 }

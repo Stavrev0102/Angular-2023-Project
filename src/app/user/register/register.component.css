@@ -26,7 +26,7 @@
 	display: none;
 }
 
-.login-register-box input {
+.login-register-box input,select {
 	background-color: rgb(240, 230, 230);
 	border: 0.1px solid rgb(186, 184, 184);
 	border-radius: 3px;

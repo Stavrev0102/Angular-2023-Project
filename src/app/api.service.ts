@@ -27,8 +27,12 @@ export class ApiService {
       }))
     }))
    }
+   getAlls():Observable<Animal[]>{
+    const { appUrl } = environment
+    return this.http.get<Animal[]>(`${appUrl}/animals/.json`)
+   }
 
-  getAnimal( id:string ):Observable<Animal>{
+  getAnimal( id:string | null ):Observable<Animal>{
     const { appUrl } = environment;
     return this.http.get<Animal>(`${appUrl}/animals/${id}/.json`)
   }

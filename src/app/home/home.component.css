@@ -79,16 +79,86 @@
     height: auto;
     border-radius: 20px;
   }
-  
-  .errorContainer {
-    -moz-animation: cssAnimation 0s ease-in 2s forwards;
-    /* Firefox */
-    -webkit-animation: cssAnimation 0s ease-in 2s forwards;
-    /* Safari and Chrome */
-    -o-animation: cssAnimation 0s ease-in 2s forwards;
-    /* Opera */
-    animation: cssAnimation 0s ease-in 2s forwards;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+
+
+/* Add styling for the moving bar */
+
+.sponsors-section {
+  background-color: #f0f0f0;
+  padding: 20px;
+  overflow: hidden; /* Hide the overflowing content */
+}
+
+/* Add styling for the moving bar */
+.moving-bar {
+  display: flex;
+  animation: move 25s linear infinite; /* Adjust the duration to control the speed of movement */
+}
+
+/* Add styling for each sponsor card */
+.sponsor-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  min-width: 150px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+h2{
+  text-align: center;
+  color: #666666;
+  font-size: 30px;
+}
+
+/* Define CSS animation for moving the bar */
+@keyframes move {
+  0% {
+      transform: translateX(100%);
   }
-  
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+.sponsor-card {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  min-width: 200px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add some fancy styling for the sponsor card content */
+.sponsor-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.sponsor-card h3 {
+  font-size: 20px;
+  margin: 0;
+  color: #333333;
+  font-weight: 600;
+}
+
+.link {
+  font-size: 14px;
+  color: #666666;
+}
+
+/* Hover effect for the sponsor card */
+.sponsor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}

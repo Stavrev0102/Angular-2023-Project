@@ -23,7 +23,6 @@ export class EditThemeComponent implements OnInit {
       this.animalId = this.activatedRoute.snapshot.params["themeId"];
       this.apiService.getAnimal(this.animalId).subscribe((res) => {
         this.currentAnimal = res
-        console.log(this.currentAnimal);
       })
     }
   

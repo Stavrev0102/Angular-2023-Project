@@ -1,0 +1,19 @@
+
+<div class="chat-container">
+    <div class="chat-messages">
+      <div class="message" *ngFor="let message of ourConvers">
+        <div class="user-avatar">
+          <img src="assets/profile.png" alt="User Avatar" />
+        </div>
+        <div class="message-content">
+          <div class="message-sender">{{ message.sender }}:</div>
+          <div class="message-text">{{ message.content }}</div>
+          <div class="message-timestamp">{{ message.timestamp | date: 'short' }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input [(ngModel)]="newMessage" placeholder="Type your message" />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>

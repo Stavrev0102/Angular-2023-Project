@@ -2,14 +2,28 @@
     <app-loader/>
   </div>
  <body>
-    <h1>All Users</h1>
+    <h1 class="all-users">All Users</h1>
 
     <ul class="user-list">
         <li *ngFor="let user of usersArray">
-            <img src="/assets/profile.png" alt="Profile Picture" class="user-avatar">
+          <ng-container *ngIf="user.gender === 'Male'">
+            <img  src="/assets/profile.png" alt="Profile Picture" class="user-avatar">
             <span>
-                <a [routerLink]="['/all-users', user.id]" class="user-email">{{user.email}}</a>
-            </span>
+              <a [routerLink]="['/all-users', user.id]" class="user-email">{{user.email}}</a>
+          </span>
+          </ng-container>
+          <ng-container *ngIf="user.gender === 'Female'">
+            <img  src="/assets/female.png" alt="Profile Picture" class="user-avatar">
+            <span>
+              <a [routerLink]="['/all-users', user.id]" class="user-email">{{user.email}}</a>
+          </span>
+          </ng-container>
+          <ng-container *ngIf="user.gender === 'Other'">
+            <img  src="/assets/other.png" alt="Profile Picture" class="user-avatar">
+            <span>
+              <a [routerLink]="['/all-users', user.id]" class="user-email">{{user.email}}</a>
+          </span>
+          </ng-container>
         </li>
     </ul>
     <div *ngIf="usersArray.length === 0">

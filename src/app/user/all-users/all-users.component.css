@@ -5,6 +5,11 @@
     cursor: pointer;
 }
 
+.all-users{
+    display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; 
+}
 .user-list li {
     margin-bottom: 10px;
     padding: 10px;

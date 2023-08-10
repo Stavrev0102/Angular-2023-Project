@@ -8,20 +8,22 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  isBurgerMenuActive = false;
   activatedRoute: any;
   constructor(private userService: UserService,private router:Router) {}
+  id:string | null = '';
+
   get isLoggedIn(): boolean {
     return this.userService.isLogged;
   }
-  id:any 
-  idi:any
-  get firstName(): string {
-    return this.userService.user?.firstName || ''
-  }
+  // 
 
   ngOnInit(): void {
      this.id = this.userService.getUserId();
      
+  }
+  toggleBurgerMenu() {
+    this.isBurgerMenuActive = !this.isBurgerMenuActive;
   }
 
   logout():void {

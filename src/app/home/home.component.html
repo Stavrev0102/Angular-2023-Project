@@ -1,7 +1,6 @@
 <!-- <app-welcome/> -->
 
 <main>
-    <!--Welcome Page-->
     <section class="welcome-content">
         <article class="welcome-content-text">
             <h1>Place for Your</h1>
@@ -12,5 +11,20 @@
             <img src="/assets/header-dog.png" alt="dog">
         </article>
     </section>
+    <h2>Sponsors</h2>
+    <section class="sponsors-section">
+        <div class="moving-bar">
+            
+            <div *ngFor="let sponsor of sponsors" class="sponsor-card">
+                <img src="{{sponsor.img}}" alt="Sponsor 1 Logo">
+                <h3>{{sponsor.name}}</h3>
+                    <p>Visit our website for more!</p>
+                    <a class="link" href="{{sponsor.link}}" target="_blank">Visit Website for more...
+                    </a>
+            </div>
+            
+        </div>
+    </section>
 
 </main>
+
