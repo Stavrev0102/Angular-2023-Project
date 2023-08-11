@@ -15,10 +15,6 @@ import { UserService } from '../user/user.service';
 export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private afAuth: AngularFireAuth,private router:Router,private userService:UserService) {
-    // this.afAuth.authState.subscribe((user) => {
-    //   this.setLoggedInStatus(!!user);
-    // });
-    // this.loggedIn = !!this.getToken();
   }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     if (this.userService.isLogged){
@@ -32,10 +28,10 @@ export class AuthInterceptor implements HttpInterceptor {
   return next.handle(req)
     .pipe(
     tap(() => {
-      console.log('Intercept')
+      console.log('Intercept Sucessfully!')
     }),
       catchError((error: HttpErrorResponse) => {
-        console.log("[Interceptor Error]", error)
+        console.log("[Error]", error)
         if (error.status === 401) {
           this.userService.logout()
           this.router.navigate(["login"], {
@@ -49,48 +45,6 @@ export class AuthInterceptor implements HttpInterceptor {
     );
 
 }
-
-
-    // return from(this.afAuth.currentUser).pipe(
-    //   switchMap((user) => {
-    //     if (user) {    
-    //       // User is logged in, add the ID token to the request headers.
-    //       return user.getIdToken().then((token) => {
-    //         const authReq = request.clone({
-    //            setHeaders: { Authorization: `Bearer ${token}` }
-    //           // setParams: {
-    //           //   auth: token ?? "",
-    //           // },
-    //         });
-    //         console.log(authReq);
-    //         //return next.handle(authReq);
-
-    //         return next.handle(authReq).pipe(
-    //           tap(() => {
-    //             console.log("Intercept");
-    //           }),
-    //           catchError((error: HttpErrorResponse) => {
-    //             console.log("[Interceptor Error]", error);
-    //             if (error.status === 401) {
-    //               this.userService.logout()
-    //               this.router.navigate(["login"], {
-    //                 queryParams: {
-    //                   authFailed: true,
-    //                 },
-    //               });
-    //             }
-    //             return throwError(error);
-    //           })
-    //         );
-    //       });
-    //     } else {
-    //       // User is not logged in, continue with the original request.
-    //       console.log('not');
-          
-    //       return next.handle(request);
-    //     }
-    //   })
-    // );
   }
 
 
