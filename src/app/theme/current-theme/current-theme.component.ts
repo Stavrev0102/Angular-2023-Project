@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from "src/app/api.service";
-import { User } from "src/app/types/user";
 import { UserService } from "src/app/user/user.service";
 import { ThemeServiceService } from "../theme-service.service";
 import { NgForm } from "@angular/forms";
@@ -40,7 +39,7 @@ export class CurrentThemeComponent implements OnInit {
   newComment:string = '';
   user:any;
   comments:any = [];
-  themeId:any;
+  themeId:string;
   commentsToShow:any[] = [];
 
 
@@ -64,8 +63,9 @@ export class CurrentThemeComponent implements OnInit {
       next: (res) => {
         this.currentAnimal = res;
 
-        this.ownerId = res.owner_id;
+        this.ownerId = res.owner_id
         this.isOwner = this.themeService.isOwnerCheck(this.ownerId, currentId);
+  
         this.userService.getProfileById(this.ownerId).subscribe({
           next: (user) => {
             this.currentUser = user;
@@ -81,8 +81,7 @@ export class CurrentThemeComponent implements OnInit {
   deleteAnimal(name:string): void {
     const id: string = this.activatedRoute.snapshot.params["themeId"];
     if(confirm(`Are you sure to delete ${name}`)) {
-      console.log(`Implement delete functionality here`);
-      console.log(this.apiService.delAnimal(id).subscribe());
+      this.apiService.delAnimal(id).subscribe();
       this.router.navigate(["/"]);
     } 
     return
@@ -91,9 +90,7 @@ export class CurrentThemeComponent implements OnInit {
   fetchComments(){
    this.afDb.list(`/animals/${this.themeId}/comments`)
     .valueChanges().subscribe((res:any) => {
-      console.log(res);
       this.commentsToShow = res
-      //this.comments = res
     });
   }
 

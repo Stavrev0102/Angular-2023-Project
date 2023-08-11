@@ -17,6 +17,7 @@ export class NewThemeComponent {
   themeId:any
   createPost(form:NgForm){
    const id = this.userService.getUserId()
+   if(form.invalid) return
     this.apiService.postAnimal(form,id).subscribe({
       next:(res:DBPOST) => {
         this.themeId = res.id;

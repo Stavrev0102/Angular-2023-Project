@@ -28,6 +28,7 @@ export class EditThemeComponent implements OnInit {
   
 
   editPost(form: NgForm) {
+    if(form.invalid) return
     const currentUserId = this.userService.getUserId()
     this.animalId = this.activatedRoute.snapshot.params["themeId"];
     this.apiService.editAnimal(form,this.animalId,currentUserId).subscribe(res => {

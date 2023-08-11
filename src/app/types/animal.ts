@@ -6,7 +6,8 @@ export interface Animal{
     id:string | undefined
     owner_id:string | undefined
     location:string;
-    name:string
+    name:string;
+    breed:string;
 }  
 
 //yes

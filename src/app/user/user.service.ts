@@ -143,12 +143,12 @@ export class UserService {
 
   followFunc(currentId: string, id: string):Observable<string> {
     const { appUrl } = environment;
-    //this.http.post(`${appUrl}/users/${currentId}/following/${id}.json`,true).subscribe(() => {})
+    this.http.post(`${appUrl}/users/${currentId}/following/${id}.json`,true).subscribe(() => {})
     return this.http.post<string>(`${appUrl}/users/${id}/followers/${currentId}.json`,true);
   }
   unFollowFunc(currentId:string,id:string){
     const { appUrl } = environment;
-    //this.http.delete(`${appUrl}/users/${currentId}/following/${id}.json`).subscribe(() => {})
+    this.http.delete(`${appUrl}/users/${currentId}/following/${id}.json`).subscribe(() => {})
     return this.http.delete(`${appUrl}/users/${id}/followers/${currentId}.json`);
   }
 }

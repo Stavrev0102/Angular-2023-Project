@@ -32,7 +32,7 @@
         <div class="imgBx">
           <img src="{{ animal.img }}" alt="post" class="cover" />
         </div>
-        <h5 class="petName">Name: {{ animal.name }}</h5>
+        <h5 class="petName">Breed: {{ animal.breed }}</h5>
         <h5 class="petAge">Age: {{ animal.age }}</h5>
 
         <a [routerLink]="['/themes', animal.id]" id="see-details">

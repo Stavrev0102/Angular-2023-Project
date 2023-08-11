@@ -5,6 +5,8 @@ This is Angular final project.
 3.ng serve 
 4.Open browser on http://localhost:4200/
   
+Everything in this project is for learning purposes!
+Data Base- Google FireBase Real Time Data Base
 
 Guest:
 Home page.

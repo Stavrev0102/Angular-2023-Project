@@ -27,10 +27,6 @@ export class ApiService {
       }))
     }))
    }
-   getAlls():Observable<Animal[]>{
-    const { appUrl } = environment
-    return this.http.get<Animal[]>(`${appUrl}/animals/.json`)
-   }
 
   getAnimal( id:string | null ):Observable<Animal>{
     const { appUrl } = environment;
@@ -63,15 +59,19 @@ export class ApiService {
     const { appUrl } = environment;
     return this.http.put<Post>(`${appUrl}/animals/${id}/.json`,data)
   } 
+  getAlls():Observable<Animal[]>{
+    const { appUrl } = environment
+    return this.http.get<Animal[]>(`${appUrl}/animals/.json`)
+  }
 
   delAnimal(id:string):Observable<string>{
     const { appUrl } = environment;
     return this.http.delete<string>(`${appUrl}/animals/${id}/.json`,)
   }
   
-  getComments(themeId:string){
+  getComments(themeId:string):Observable<string[]>{
     const { appUrl } = environment;
-    return this.http.get(`${appUrl}/animals/${themeId}/comments.json`)
+    return this.http.get<string[]>(`${appUrl}/animals/${themeId}/comments.json`)
     
   }
 }
