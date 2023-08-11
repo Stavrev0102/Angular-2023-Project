@@ -60,6 +60,7 @@
       <p class="error" *ngIf="form.get('telephone')?.errors?.['minlength']">
         Telephone number should not be less than {{form.get('telephone')?.errors?.['minlength']['requiredLength']}} symbols!
     </p>
+    
       </ng-container>
         <ng-container formGroupName="passGroup">
         <!-- password -->
@@ -95,6 +96,8 @@
         </ng-container>
 
       </ng-container>
+
+
         <!-- Register Button -->
         <button [disabled]="form.invalid"
         [style]="{backgroundColor:form.invalid ? 'red' : 'blue'}">

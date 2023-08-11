@@ -3,8 +3,6 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/datab
 import { ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest, map } from 'rxjs';
 import { UserService } from '../user.service';
-import { and } from '@angular/fire/firestore';
-
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -17,8 +15,8 @@ export class ChatComponent implements OnInit {
   messages: Observable<any[]>;
   messagesSent: Observable<any[]>;
   newMessage: string = '';
-  userId: any;
-  currentId:any
+  userId: string;
+  currentId:any;
   currentUser:any;
   ourConvers:any;
   user:any;
@@ -67,45 +65,17 @@ export class ChatComponent implements OnInit {
         );
     });
   this.messages.subscribe(res => {  
-    this.ourConvers = res
-    console.log(res);
-     
+    this.ourConvers = res     
     })
     
   }
-  // ngOnInit(): void {
-  //   this.currentId = this.userService.getUserId(); // our id
-  //   this.userService.getProfileById(this.userId).subscribe((res) => {
-  //     this.user = res;
-  //     this.messages = this.afDb.list('/messages', (ref) =>
-  //       ref
-  //         .orderByChild('sendTo')
-  //         .equalTo(this.user.email)
-  //         .limitToLast(50)
-  //     ).valueChanges();
-  //   });
-  //    this.messages.subscribe(res => {
-  //     this.ourConvers  = res
-  //    })
-    
-  // }
-
   currentMessages(allMessages:any):any{
-    let messagesToShow = []
-    
-    console.log('User ----> ',this.user);
-    console.log('My profile----->',this.currentUser) //my profile
+    let messagesToShow = [];
     for (const message of allMessages) {
       if(this.currentUser?.email === message.sender && this.user?.email === message.sendTo){ 
-        messagesToShow.push(message)
-        
-    } else {
-      console.log('ne');
-      
+        messagesToShow.push(message) 
+     }
     }
-
-    }
-    console.log(messagesToShow);
     
     return messagesToShow
     
@@ -121,8 +91,8 @@ export class ChatComponent implements OnInit {
           content: this.newMessage,
           timestamp: Date.now(),
         };
-        this.messagesRef.push(newMessage); // Store the message under 'messages' node
-        this.messagesSentRef?.push(newMessage); // Store the message under 'sent' node
+        this.messagesRef.push(newMessage); 
+        this.messagesSentRef?.push(newMessage);
   
         // Update the message to be sent to the selected user's sent messages
         const selectedUserMessagesSentRef = this.afDb.list(`/users/${this.userId}/sent`);
@@ -138,22 +108,4 @@ export class ChatComponent implements OnInit {
       }
     });
   }
-  
-  // sendMessage() {
-  //   this.currentId = this.userService.getUserId();
-  //   this.userService.getProfileById(this.currentId).subscribe((res) => {
-  //     if (this.newMessage.trim() !== '') {
-  //       const newMessage = {
-  //         sendTo: this.user.email,
-  //         senderId: this.currentId,
-  //         sender: res.email,
-  //         content: this.newMessage,
-  //         timestamp: Date.now(),
-  //       };
-  //       this.messagesRef.push(newMessage); // Store the message under 'messages' node
-  //       this.messagesSentRef?.push(newMessage); // Store the message under 'sent' node
-  //       this.newMessage = '';
-  //     }
-  //   });
-  // }
 }

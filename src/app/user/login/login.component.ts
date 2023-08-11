@@ -18,6 +18,10 @@ export class LoginComponent {
   ) {}
   appEmailDomains = DEFAULT_EMAIL_DOMAINS;
   incorrrectData:boolean  = false;
+
+  passwordFieldType: string = 'password'; // Default password field type
+  passwordValue: string = ''; // Input field value
+  showPassword: boolean = false; // Initial password visibility
   
   async login(form:NgForm){
     const currentForm = form.value
@@ -38,5 +42,9 @@ export class LoginComponent {
       }
    
    
+  }
+  togglePasswordVisibility() {
+    this.passwordFieldType = this.showPassword ? 'password' : 'text';
+    this.showPassword = !this.showPassword;
   }
 }

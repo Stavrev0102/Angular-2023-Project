@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { DBPOST } from 'src/app/types/DBPOST';
-import { User } from 'src/app/types/user';
 import { UserService } from 'src/app/user/user.service';
 
 
@@ -15,7 +14,6 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class NewThemeComponent {
   constructor(private afDB:AngularFireDatabase ,private apiService:ApiService,private router:Router,private userService:UserService) {}
-  currentUser:any
   themeId:any
   createPost(form:NgForm){
    const id = this.userService.getUserId()

@@ -29,17 +29,22 @@
         <p>
           <label>Password:</label>
           <input
-            type="password"
+            type="{{ passwordFieldType }}"
             name="password"
             placeholder="Password"
             id="password"
             placeholder="********"
-            #inputPassword="ngModel"
-            ngModel
+            [(ngModel)]="passwordValue"
+            #inputPassword = 'ngModel'
             required
             minlength="8"
           />
+          <button  type="button" (click)="togglePasswordVisibility()">
+            <i class="fa" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i>
+          </button>
         </p>
+
+
         <ng-container *ngIf="inputPassword.touched">
           <p class="error" *ngIf="inputPassword?.errors?.['required']">
                   Password is required!
