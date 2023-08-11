@@ -4,6 +4,7 @@ This is Angular final project.
 2.Intall node_modules.
 3.ng serve 
 4.Open browser on http://localhost:4200/
+5.Deploy version: https://petstagram-project.vercel.app/themes
   
 Everything in this project is for learning purposes!
 Data Base- Google FireBase Real Time Data Base
