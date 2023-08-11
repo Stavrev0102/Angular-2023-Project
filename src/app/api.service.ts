@@ -68,4 +68,10 @@ export class ApiService {
     const { appUrl } = environment;
     return this.http.delete<string>(`${appUrl}/animals/${id}/.json`,)
   }
+  
+  getComments(themeId:string){
+    const { appUrl } = environment;
+    return this.http.get(`${appUrl}/animals/${themeId}/comments.json`)
+    
+  }
 }

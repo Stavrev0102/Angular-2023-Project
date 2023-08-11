@@ -4,6 +4,8 @@ import { ApiService } from "src/app/api.service";
 import { User } from "src/app/types/user";
 import { UserService } from "src/app/user/user.service";
 import { ThemeServiceService } from "../theme-service.service";
+import { NgForm } from "@angular/forms";
+import { AngularFireDatabase, AngularFireList } from "@angular/fire/compat/database";
 
 @Component({
   selector: "app-current-theme",
@@ -11,21 +13,43 @@ import { ThemeServiceService } from "../theme-service.service";
   styleUrls: ["./current-theme.component.css"],
 })
 export class CurrentThemeComponent implements OnInit {
+  commentsRef:AngularFireList<any>
+
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private router: Router,
-    private themeService:ThemeServiceService
-  ) {}
+    private themeService:ThemeServiceService,
+    private afDb:AngularFireDatabase,
+    private route:ActivatedRoute
+  ) {
+    this.themeId = this.route.snapshot.params['themeId']; //other id
+
+    this.commentsRef = this.afDb.list(`/animals/${this.themeId}/comments`);
+    this.comments = this.commentsRef.valueChanges();
+  }
   currentAnimal: any = [];
   currentUser: any = [];
   isLoading: boolean = true;
   ownerId: any = [];
   isOwner: boolean = false;
-  id:string = ''
+  id:string = '';
+  currentId:any;
+  currentAnimalId:any;
+  newComment:string = '';
+  user:any;
+  comments:any;
+  themeId:any;
+
+
   ngOnInit(): void {
     this.fetchTheme();
+    this.userService.getProfileById(this.userService.getUserId()).subscribe((res) => {
+     this.user = res
+    });
+   this.fetchComments();
+    
   }
 
   get isLoggedIn(): boolean {
@@ -44,7 +68,6 @@ export class CurrentThemeComponent implements OnInit {
         this.userService.getProfileById(this.ownerId).subscribe({
           next: (user) => {
             this.currentUser = user;
-            console.log(this.currentUser);
           },
           error: (err) => console.log(err),
         }),
@@ -62,5 +85,32 @@ export class CurrentThemeComponent implements OnInit {
       this.router.navigate(["/"]);
     } 
     return
+  }
+
+  fetchComments(){
+   this.afDb.list(`/animals/${this.themeId}/comments`)
+    .valueChanges().subscribe((res:any) => {
+      this.comments = res
+    });
+  }
+
+  sendComment(form:NgForm){
+    this.newComment = form.value;
+    this.currentId = this.userService.getUserId();// my profile id
+    this.currentAnimalId = this.activatedRoute.snapshot.params["themeId"];
+    
+    this.apiService.getAnimal(this.currentAnimalId).subscribe((res) => {
+      if(this.newComment !== ''){
+        const comment = {
+          comments:this.newComment,
+          senderId:this.currentId,
+          user:this.user.username,
+          gender:this.user.gender,
+        }
+        this.commentsRef.push(comment);
+        form.resetForm()
+      }
+      
+    })
   }
 }

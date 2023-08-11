@@ -1,37 +1,87 @@
 <main>
-<div *ngIf="isLoading">
-  <app-loader/>
-</div>
-<div *ngIf="!isLoading" class="profile">
-  <a [routerLink]="['/all-users', currentAnimal.owner_id]">
-    <div class="profilepic">
-      <div class="profile_img">
-        <div class="image">
-          <img src="/assets/man.png" />
+  <div *ngIf="isLoading">
+    <app-loader />
+  </div>
+  <div *ngIf="!isLoading" class="profile">
+    <a [routerLink]="['/all-users', currentAnimal.owner_id]">
+      <div class="profilepic">
+        <div class="profile_img">
+          <div class="image">
+            <img src="/assets/man.png" />
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <div *ngIf="!isLoading" class="animal-card">
+      <div class="owner">
+        <span>Owner: {{ currentUser.username }}</span>
+      </div>
+      <div class="image-container">
+        <img src="{{ currentAnimal.img }}" alt="Animal" class="animal-image" />
+        <div *ngIf="isOwner" class="edit-delete-buttons">
+          <button class="edit-button" [routerLink]="['/edit-theme', id]">
+            Edit
+          </button>
+          <button
+            class="delete-button"
+            (click)="deleteAnimal(currentAnimal.name)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+      <div class="info">
+        <h2 class="name">{{ currentAnimal.name }}</h2>
+        <p class="age">Age: {{ currentAnimal.age }} years</p>
+        <p class="breed">Breed: {{ currentAnimal.breed }}</p>
+      </div>
+      <p class="description">
+        {{ currentAnimal.description }}
+      </p>
+    </div> 
+  </div>
+  <!-- comments list -->
+  <div class="bottom">
+    <!-- Photo description -->
+    <div class="comments">
+      <div class="comments-top">
+        <div *ngFor="let comment of comments" class="userDetails">
+          <div class="comment-data">
+            <div class="profilepic">
+              <div class="profile_img">
+                <div class="image-comment">
+                  <a [routerLink]="['/all-users',comment.senderId]">
+                  <img *ngIf="comment.gender === 'Male'" src="/assets/man.png" alt="img8" />
+                  <img *ngIf="comment.gender === 'Female'" src="/assets/female.png" alt="img8" />
+                  <img *ngIf="comment.gender === 'Other'" src="/assets/other.png" alt="img8" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!--User's username-->
+            <p><b>{{comment.user}}: </b>{{comment.comments.comment}}</p>
+          </div>
         </div>
       </div>
     </div>
-  </a>
-
-<div *ngIf="!isLoading" class="animal-card">
-  <div class="owner">
-    <span>Owner: {{currentUser.username}}</span>
   </div>
-  <div class="image-container">
-    <img src="{{currentAnimal.img}}" alt="Animal" class="animal-image" />
-    <div *ngIf="isOwner" class="edit-delete-buttons">
-      <button class="edit-button" [routerLink]="['/edit-theme',id]">Edit</button>
-      <button class="delete-button" (click)="deleteAnimal(currentAnimal.name)">Delete</button>
-    </div>
+<!-- add comment -->
+  <div class="addComments">
+    <!-- Start Add Comments Form -->
+    <form #form="ngForm" (ngSubmit)="sendComment(form)">
+      <input
+        id="comment-textarea"
+        name="comment"
+        #inputComment="ngModel"
+        ngModel
+        cols="40"
+        rows="10"
+        placeholder="Add comment..."
+      />
+      <!-- Post Comments Button -->
+      <button type="submit">Post</button>
+    </form>
   </div>
-  <div class="info">
-    <h2 class="name">{{currentAnimal.name}}</h2>
-    <p class="age">Age: {{currentAnimal.age}} years</p>
-    <p class="breed">Breed: {{currentAnimal.breed}}</p>
-  </div>
-  <p class="description">
-   {{currentAnimal.description}}
-  </p>
-</div>
-</div>
 </main>
