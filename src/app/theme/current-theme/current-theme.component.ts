@@ -27,7 +27,7 @@ export class CurrentThemeComponent implements OnInit {
     this.themeId = this.route.snapshot.params['themeId']; //other id
 
     this.commentsRef = this.afDb.list(`/animals/${this.themeId}/comments`);
-    this.comments = this.commentsRef.valueChanges();
+    this.comments = this.commentsRef.valueChanges()
   }
   currentAnimal: any = [];
   currentUser: any = [];
@@ -39,8 +39,9 @@ export class CurrentThemeComponent implements OnInit {
   currentAnimalId:any;
   newComment:string = '';
   user:any;
-  comments:any;
+  comments:any = [];
   themeId:any;
+  commentsToShow:any[] = [];
 
 
   ngOnInit(): void {
@@ -90,7 +91,9 @@ export class CurrentThemeComponent implements OnInit {
   fetchComments(){
    this.afDb.list(`/animals/${this.themeId}/comments`)
     .valueChanges().subscribe((res:any) => {
-      this.comments = res
+      console.log(res);
+      this.commentsToShow = res
+      //this.comments = res
     });
   }
 
