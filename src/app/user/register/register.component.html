@@ -38,20 +38,16 @@
             </p>
         </ng-container>
 
-        <ng-container [ngSwitch]="true">
-          <select name="select" id="select" formControlName="gender">
-            <option value="" selected disabled>Select gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
-          <ng-container *ngSwitchCase="true">
-            <ng-container *ngIf="form.get('gender')?.touched">
-              <p class="error" *ngIf="form.get('gender')?.errors?.['required']">
+        <select  id="select"  formControlName="gender"  >
+          <option value="" selected disabled >Select gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <ng-container *ngIf="form.get('gender')?.touched">
+          <p class="error" *ngIf="form.get('gender')?.errors?.['required']">
                 Gender is required!
-              </p>
-            </ng-container>
-          </ng-container>
+            </p>
         </ng-container>
 
         <!-- telephone -->

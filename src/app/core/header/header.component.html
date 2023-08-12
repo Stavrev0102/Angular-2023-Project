@@ -102,6 +102,11 @@
             <i>All profiles</i>
           </a>
         </li>
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <a routerLink="/search">
+            <i>Search</i>
+          </a>
+        </li>
         <li  *ngIf="isLoggedIn" class="nav-item">
           <a (click)="logout()">
             <i>Logout</i>
