@@ -24,6 +24,7 @@ import { AuthGuardEdit } from './auth/edit-guard.guard';
 import { idGuard } from './auth/id.guard';
 import { ThemeGuard } from './auth/theme.guard';
 import { SearchComponent } from './search/search.component';
+import { IsLoggedGuard } from './auth/is-logged.guard';
 
 
 const INTERCEPTOR_PROVIDER: Provider = {
@@ -54,7 +55,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     FormsModule,
    
   ],
-  providers: [INTERCEPTOR_PROVIDER,AuthGuard,AuthGuardEdit,ThemeGuard,idGuard],
+  providers: [INTERCEPTOR_PROVIDER,AuthGuard,AuthGuardEdit,ThemeGuard,idGuard,IsLoggedGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+ 

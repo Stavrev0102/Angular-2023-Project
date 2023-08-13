@@ -8,16 +8,19 @@ import { AllUsersComponent } from './all-users/all-users.component';
 import { AuthGuard } from '../auth/auth-guard.guard';
 import { ChatComponent } from './chat/chat.component';
 import { idGuard } from '../auth/id.guard';
+import { IsLoggedGuard } from '../auth/is-logged.guard';
 
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate:[IsLoggedGuard]
   },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate:[IsLoggedGuard]
   },
   {
     path: 'profile',
