@@ -31,7 +31,7 @@ export class AuthGuardEdit implements CanActivate {
     const pageId = route.paramMap.get("themeId");
     const userId = this.userService.getUserId();
 
-    return this.apiService.getAnimal(pageId).pipe(
+    return this.apiService.getCar(pageId).pipe(
       map((res) => {
         if (this.themeService.isOwnerCheck(res.owner_id, userId)) {
           return true;

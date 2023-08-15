@@ -1,18 +1,20 @@
+
 .login-register-div {
-	margin-top: 10%;
+	margin-top: 20%;
 }
 
 .login-register-box, .second-option {
 	display: block;
 	max-width: 500px;
     margin: auto;
-	background-color: rgb(255, 255, 255);
+	background-color: rgba(34, 33, 33, 0.488);
 	border: 1px solid rgb(156, 152, 152);
 	padding: 40px;
 	margin-bottom: 15px;
-	border-radius: 3px;
+	border-radius: 20px;
 	border: 1px solid;
 	box-shadow: 1px 2px 3px #888888;
+	color: white;
 }
 
 .login-register-box h1 {
@@ -25,7 +27,9 @@
 .login-register-box label {
 	display: none;
 }
-
+a{
+	color: aliceblue;
+}
 .login-register-box input {
 	background-color: rgb(240, 230, 230);
 	border: 0.1px solid rgb(186, 184, 184);

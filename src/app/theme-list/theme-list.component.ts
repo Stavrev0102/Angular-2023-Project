@@ -4,6 +4,7 @@ import { UserService } from '../user/user.service';
 import { Animal } from '../types/animal';
 import { Subscription } from 'rxjs';
 import { CanActivateFn } from '@angular/router';
+import { Car } from '../types/Car';
 
 @Component({
   selector: 'app-theme-list',
@@ -11,8 +12,8 @@ import { CanActivateFn } from '@angular/router';
   styleUrls: ['./theme-list.component.css'],
 })
 export class ThemeListComponent implements OnInit, OnDestroy {
-  animalSubscription:Subscription = new Subscription
-  animalList:Animal[] = [];
+  carsSubscription:Subscription = new Subscription
+  carsList:Car[] = [];
   isLoading:boolean = true;
   constructor(private apiService: ApiService,private userService:UserService) {}
 
@@ -21,15 +22,15 @@ export class ThemeListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-  this.animalSubscription =  this.apiService.getAll().subscribe({
+  this.carsSubscription =  this.apiService.getAll().subscribe({
     next:((res) => {
-      this.animalList = res.reverse();
+      this.carsList = res.reverse();
       this.isLoading = false;  
     })
   });
 
   }
   ngOnDestroy(): void {
-    this.animalSubscription.unsubscribe()
+    this.carsSubscription.unsubscribe()
   }
 }

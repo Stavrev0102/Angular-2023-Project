@@ -1,37 +1,108 @@
-
 <main>
   <!-- Start Add Photo Section -->
   <div class="createPage">
-    <h2>Add photo</h2>
+    <h2>What you are selling?</h2>
     <!-- Start Add Photo Form -->
     <form #form="ngForm" (ngSubmit)="createPost(form)">
       <p>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
+        <select
+          class="select"
+          name="brand"
+          placeholder="Brand"
+          #inputBrand="ngModel"
           ngModel
-          #inputName="ngModel"
           required
-        />
-        <ng-container *ngIf="inputName.touched">
-          <p class="error" *ngIf="inputName?.errors?.['required']"> Name is required.</p>
+        > 
+          <option value="" selected disabled>Select Brand</option>
+          <ng-container *ngFor="let brand of brands">
+            <option value={{brand}}>{{brand}}</option>
+          </ng-container>
+        </select>
+        <ng-container *ngIf="inputBrand.touched">
+          <p class="error" *ngIf="inputBrand?.errors?.['required']">
+            Brand is required.
+          </p>
         </ng-container>
       </p>
 
       <p>
         <input
-          type="number"
-          name="age"
-          placeholder="Age"
-          #inputAge="ngModel"
+          type="text"
+          name="model"
+          placeholder="Model"
+          #inputModel="ngModel"
           ngModel
           required
         />
-        <ng-container *ngIf="inputAge.touched">
-          <p class="error" *ngIf="inputAge?.errors?.['required']"> Age is required.</p>
+        <ng-container *ngIf="inputModel.touched">
+          <p class="error" *ngIf="inputModel?.errors?.['required']">
+            Model is required.
+          </p>
         </ng-container>
       </p>
+      <p>
+        <select
+          class="select"
+          name="engine"
+          placeholder="Engine"
+          #inputEngine="ngModel"
+          ngModel
+          required
+        > 
+          <option value="" selected disabled>Select Engine</option>
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Gas">Gas</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="Electric">Electric</option>
+        </select>
+        <ng-container *ngIf="inputEngine.touched">
+          <p class="error" *ngIf="inputEngine?.errors?.['required']">
+            Engine type is required!
+          </p>
+        </ng-container>
+      </p>
+      <p>
+        <select
+          class="select"
+          name="transmission"
+          placeholder="Transmission"
+          #inputTransmission="ngModel"
+          ngModel
+          required
+        > 
+          <option value="" selected disabled>Select Transmission</option>
+            <option value="Manual">Manual</option> 
+            <option value="Automatic">Automatic</option> 
+            <option value="Semi-Automatic">Semi-Automatic</option> 
+        </select>
+        <ng-container *ngIf="inputTransmission.touched">
+          <p class="error" *ngIf="inputTransmission?.errors?.['required']">
+            Transmission type is required.
+          </p>
+        </ng-container>
+      </p>
+      <p>
+        <select
+          class="select"
+          name="year"
+          placeholder="Year"
+          #inputYear="ngModel"
+          ngModel
+          required
+        > 
+          <option value="" selected disabled>Select Year</option>
+          <ng-container *ngFor="let year of years">
+            <option value={{year}}>{{year}}</option>
+          </ng-container>
+        </select>
+        <ng-container *ngIf="inputYear.touched">
+          <p class="error" *ngIf="inputYear?.errors?.['required']">
+            Year is required.
+          </p>
+        </ng-container>
+      </p>
+
 
       <p>
         <textarea
@@ -42,11 +113,17 @@
           #inputDescription="ngModel"
           minlength="10"
           required
+          pattern="^(?!\s).*"
         ></textarea>
         <ng-container *ngIf="inputDescription.touched">
-          <p class="error" *ngIf="inputDescription?.errors?.['required']"> Description is required.</p>
+          <p class="error" *ngIf="inputDescription?.errors?.['required']">
+            Description is required.
+          </p>
           <p class="error" *ngIf="inputDescription?.errors?.['minlength']">
             Description should not be less than 10!
+          </p>
+          <p class="error" *ngIf="inputDescription?.errors?.['pattern']">
+            Invalid description!
           </p>
         </ng-container>
       </p>
@@ -59,22 +136,30 @@
           ngModel
           #inputLocation="ngModel"
           required
+          pattern="^(?!\s).*"
         />
         <ng-container *ngIf="inputLocation.touched">
-          <p class="error" *ngIf="inputLocation?.errors?.['required']"> Location is required.</p>
+          <p class="error" *ngIf="inputLocation?.errors?.['required']">
+            Location is required.
+          </p>
+          <p class="error" *ngIf="inputLocation?.errors?.['pattern']">
+            Location cannot contains spaces.
+          </p>
         </ng-container>
       </p>
       <p>
         <input
-          type="text"
-          name="breed"
-          placeholder="Breed"
+          type="number"
+          name="price"
+          placeholder="Price"
           ngModel
-          #inputBreed="ngModel"
+          #inputPrice="ngModel"
           required
         />
-        <ng-container *ngIf="inputBreed.touched">
-          <p class="error" *ngIf="inputLocation?.errors?.['required']"> Breed is required.</p>
+        <ng-container *ngIf="inputPrice.touched">
+          <p class="error" *ngIf="inputPrice?.errors?.['required']">
+            Price is required.
+          </p>
         </ng-container>
       </p>
 
@@ -88,7 +173,7 @@
         />
       </p>
       <!-- Add Photo Button -->
-      <button class="add-btn">Add Photo</button>
+      <button class="add-btn">Add Car</button>
     </form>
   </div>
 </main>

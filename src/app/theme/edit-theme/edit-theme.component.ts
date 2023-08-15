@@ -21,7 +21,7 @@ export class EditThemeComponent implements OnInit {
   currentAnimal:any;
     ngOnInit(): void {
       this.animalId = this.activatedRoute.snapshot.params["themeId"];
-      this.apiService.getAnimal(this.animalId).subscribe((res) => {
+      this.apiService.getCar(this.animalId).subscribe((res) => {
         this.currentAnimal = res
       })
     }

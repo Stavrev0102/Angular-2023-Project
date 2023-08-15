@@ -4,7 +4,7 @@
     height: 500px;
     border-radius: 50%/ 0 0 40px 40px;
     width: 100%;
-    background-color: #ffdeefd2;
+    background-image:url("https://pikwizard.com/pw/medium/962fb72929ecfe5f9abd498c4d46e1d9.avif");
   }
   
   .welcome-content-text {
@@ -21,12 +21,12 @@
   .welcome-content-text h1 {
     font-size: 60px;
     margin: 0px;
-    color: black;
+    color: white;
     font-weight: 400;
   }
   
   .welcome-content-text p {
-    color: black;
+    color: wheat;
   }
   
   h1.bold-welcome {

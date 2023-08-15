@@ -3,7 +3,7 @@
     <app-loader />
   </div>
   <div *ngIf="!isLoading" class="profile">
-    <a [routerLink]="['/all-users', currentAnimal.owner_id]">
+    <a [routerLink]="['/all-users', currentCar.owner_id]">
       <div class="profilepic">
         <div class="profile_img">
           <div class="image">
@@ -18,26 +18,26 @@
         <span>Owner: {{ currentUser.username }}</span>
       </div>
       <div class="image-container">
-        <img src="{{ currentAnimal.img }}" alt="Animal" class="animal-image" />
+        <img src="{{ currentCar.img }}" alt="Animal" class="animal-image" />
         <div *ngIf="isOwner" class="edit-delete-buttons">
           <button class="edit-button" [routerLink]="['/edit-theme', id]">
             Edit
           </button>
           <button
             class="delete-button"
-            (click)="deleteAnimal(currentAnimal.name)"
+            (click)="deleteAnimal(currentCar.brand)"
           >
             Delete
           </button>
         </div>
       </div>
       <div class="info">
-        <h2 class="name">{{ currentAnimal.name }}</h2>
-        <p class="age">Age: {{ currentAnimal.age }} years</p>
-        <p class="breed">Breed: {{ currentAnimal.breed }}</p>
+        <h2 class="name">Brand: {{ currentCar.brand }}</h2>
+        <p class="age">Year: {{ currentCar.year }}</p>
+        <p class="breed">Model: {{currentCar.model }}</p>
       </div>
       <p class="description">
-        {{ currentAnimal.description }}
+        {{ currentCar.description }}
       </p>
     </div> 
   </div>

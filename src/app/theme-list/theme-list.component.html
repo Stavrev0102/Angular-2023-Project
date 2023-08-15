@@ -8,10 +8,10 @@
   </div>
   <div class="container">
     <div class="col-9">
-      <div *ngFor="let animal of animalList" class="card">
+      <div *ngFor="let car of carsList" class="card">
         <div class="top">
           <div class="userDetails">
-            <a [routerLink]="['/all-users', animal.owner_id]">
+            <a [routerLink]="['/all-users', car.owner_id]">
               <div class="profilepic">
                 <div class="profile_img">
                   <div class="image">
@@ -20,27 +20,26 @@
                 </div>
               </div>
             </a>
-            <h3>
+            <h3> 
               <p>
-                {{ animal.name }}
+                {{ car.brand }} {{car.model}}
               </p>
-              <span>{{ animal.location }}</span>
+              <span>{{ car.location }}</span>
             </h3>
           </div>
         </div>
 
         <div class="imgBx">
-          <img src="{{ animal.img }}" alt="post" class="cover" />
+          <img src="{{ car.img }}" alt="post" class="cover" />
         </div>
-        <h5 class="petName">Breed: {{ animal.breed }}</h5>
-        <h5 class="petAge">Age: {{ animal.age }}</h5>
+        <h5 class="petAge">Age: {{ car.year }}</h5>
 
-        <a [routerLink]="['/themes', animal.id]" id="see-details">
+        <a [routerLink]="['/themes', car.id]" id="see-details">
           <h4 class="details">See details</h4>
         </a>
       </div>
 
-      <div *ngIf="!animalList">
+      <div *ngIf="!carsList">
         <article class="not-available-photo">
           <h1>No photo posts yet.</h1>
         </article>

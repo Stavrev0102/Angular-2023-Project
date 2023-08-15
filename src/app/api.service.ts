@@ -7,6 +7,7 @@ import { Observable, map } from "rxjs";
 import { FbCreatedResponse } from "./types/FbCreatedResponse";
 import { Post } from "./types/post";
 import { User } from "./types/user";
+import { Car } from "./types/Car";
 
 @Injectable({
   providedIn: "root",
@@ -17,9 +18,9 @@ export class ApiService {
   }
   constructor(private http: HttpClient) {}
 
-  getAll():Observable<Animal[]>{
+  getAll():Observable<Car[]>{
     const { appUrl } = environment
-    return this.http.get<Animal>(`${appUrl}/animals/.json`)
+    return this.http.get<Car>(`${appUrl}/cars/.json`)
     .pipe(map((response : {[key:string] : any}) => {
       return Object.keys(response).map((key:string) => ({
         ...response[key],
@@ -28,9 +29,9 @@ export class ApiService {
     }))
    }
 
-  getAnimal( id:string | null ):Observable<Animal>{
+  getCar( id:string | null ):Observable<Car>{
     const { appUrl } = environment;
-    return this.http.get<Animal>(`${appUrl}/animals/${id}/.json`)
+    return this.http.get<Car>(`${appUrl}/cars/${id}/.json`)
   }
 
   getCurrentUser(): Observable<User> {
@@ -41,27 +42,32 @@ export class ApiService {
       .get<User>(`${appUrl}/users/${userId}/.json`);
   }
 
-  postAnimal(form: NgForm,id:string | null):Observable<Post> {
+  postOffer(form: NgForm, id: string | null): Observable<Car> {
     const data = form.value;
     data.owner_id = id;
     const { appUrl } = environment;
-    return this.http.post<Post>(`${appUrl}/animals/.json`,data)
-    .pipe(map((response: FbCreatedResponse) => {
-      return {
-        ...data,
-        id:response.name
-      }
-    }))
+    
+    return this.http.post<FbCreatedResponse>(`${appUrl}/cars/.json`, data)
+      .pipe(
+        map((response: FbCreatedResponse) => {
+          const newCar: Car = {
+            ...data,
+            id: response.name
+          };
+          return newCar;
+        })
+      );
   }
+  
   editAnimal(form:NgForm,id:string | null,currentUserId:string | null):Observable<Post> {
     const data = form.value;
     data.owner_id = currentUserId
     const { appUrl } = environment;
     return this.http.put<Post>(`${appUrl}/animals/${id}/.json`,data)
   } 
-  getAlls():Observable<Animal[]>{
+  getAlls():Observable<Car[]>{
     const { appUrl } = environment
-    return this.http.get<Animal[]>(`${appUrl}/animals/.json`)
+    return this.http.get<Car[]>(`${appUrl}/cars/.json`)
   }
 
   delAnimal(id:string):Observable<string>{

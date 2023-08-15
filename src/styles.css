@@ -1,8 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
 
-/*
-*Removes all default whitespace
-*/
 * {
     padding: 0;
     margin: 0;
@@ -29,6 +25,16 @@ html {
 body, form, input, textarea, option, select, button {
     font: inherit;
 }
+app-login{
+	background-image: url('https://media.discordapp.net/attachments/1131238035296628951/1141073266216280224/desktop-wallpaper-speedofgermany-on-instagram-mercedes-mercedes-benz-g-class-2021.png?width=770&height=962');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
 
 .wrapper app-footer{
     margin-top: auto;
@@ -38,12 +44,17 @@ app-search{
     background-position: top;
 }
 app-new-theme{
-    background-image: url('assets/add-photo.png');
+    background-image: url('assets/new-car.jpeg');
     background-position: top;
 }
 app-register{
-    background-image: url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80');
-    background-position: top;
+    background-image: url('https://www.mycarcheck.com/assets/images/1440/heroes/car-tyres.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
 }
 
 

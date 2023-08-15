@@ -7,6 +7,7 @@ import { ApiService } from "src/app/api.service";
 import { Subject } from "rxjs";
 import { takeUntil, switchMap } from 'rxjs/operators';
 import { Animal } from "src/app/types/animal";
+import { Car } from "src/app/types/Car";
 
 @Component({
   selector: "app-profile",
@@ -16,7 +17,7 @@ import { Animal } from "src/app/types/animal";
 export class ProfileComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
   currentUser: any = [];
-  postsArray: Animal[] = [];
+  postsArray: Car[] = [];
   id: string = '';
   currentId: any; 
   followers: string[] = [];

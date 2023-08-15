@@ -28,7 +28,7 @@ export class idGuard implements CanActivate {
       map((res:any) => {  
         if (Object.keys(res).includes(this.pageId)) {
           return true; 
-        } else {
+        } else {    
           return this.router.createUrlTree(["404"]);
         }
       })

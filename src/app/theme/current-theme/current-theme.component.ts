@@ -28,7 +28,7 @@ export class CurrentThemeComponent implements OnInit {
     this.commentsRef = this.afDb.list(`/animals/${this.themeId}/comments`);
     this.comments = this.commentsRef.valueChanges()
   }
-  currentAnimal: any = [];
+  currentCar: any = [];
   currentUser: any = [];
   isLoading: boolean = true;
   ownerId: any = [];
@@ -59,9 +59,9 @@ export class CurrentThemeComponent implements OnInit {
   fetchTheme(): void { 
      this.id = this.activatedRoute.snapshot.params["themeId"];
     const currentId = this.userService.getUserId();
-    this.apiService.getAnimal(this.id).subscribe({
+    this.apiService.getCar(this.id).subscribe({
       next: (res) => {
-        this.currentAnimal = res;
+        this.currentCar = res;
 
         this.ownerId = res.owner_id
         this.isOwner = this.themeService.isOwnerCheck(this.ownerId, currentId);
@@ -99,7 +99,7 @@ export class CurrentThemeComponent implements OnInit {
     this.currentId = this.userService.getUserId();// my profile id
     this.currentAnimalId = this.activatedRoute.snapshot.params["themeId"];
     
-    this.apiService.getAnimal(this.currentAnimalId).subscribe((res) => {
+    this.apiService.getCar(this.currentAnimalId).subscribe((res) => {
       if(this.newComment !== ''){
         const comment = {
           comments:this.newComment,
