@@ -22,10 +22,14 @@ export class ApiService {
     const { appUrl } = environment
     return this.http.get<Car>(`${appUrl}/cars/.json`)
     .pipe(map((response : {[key:string] : any}) => {
-      return Object.keys(response).map((key:string) => ({
-        ...response[key],
-        id:key,
-      }))
+      if (response) {
+        return Object.keys(response).map((key: string) => ({
+          ...response[key],
+          id: key,
+        }));
+      } else {
+        return []; // or handle null/undefined case as needed
+      }
     }))
    }
 
@@ -59,20 +63,20 @@ export class ApiService {
       );
   }
   
-  editAnimal(form:NgForm,id:string | null,currentUserId:string | null):Observable<Post> {
+  editCar(form:NgForm,id:string | null,currentUserId:string | null):Observable<Car> {
     const data = form.value;
     data.owner_id = currentUserId
     const { appUrl } = environment;
-    return this.http.put<Post>(`${appUrl}/animals/${id}/.json`,data)
+    return this.http.put<Car>(`${appUrl}/cars/${id}/.json`,data)
   } 
   getAlls():Observable<Car[]>{
     const { appUrl } = environment
     return this.http.get<Car[]>(`${appUrl}/cars/.json`)
   }
 
-  delAnimal(id:string):Observable<string>{
+  delCar(id:string):Observable<string>{
     const { appUrl } = environment;
-    return this.http.delete<string>(`${appUrl}/animals/${id}/.json`,)
+    return this.http.delete<string>(`${appUrl}/cars/${id}/.json`,)
   }
   
   getComments(themeId:string):Observable<string[]>{

@@ -1,6 +1,191 @@
 
 
-@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
+ul{
+  margin: 0;
+  padding: 0;
+}
+ul li{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4em;
+  margin-bottom: 4em;
+  gap: 7em;
+}
+.vehicle-card{
+  position: relative;
+  display: flex;
+  height: 350px;
+  overflow: visible;
+  z-index: 1;
+  border-radius: 2px;
+  margin: 0 20px 20px 0;
+  gap:1em
+}
+
+.vehicle-card:hover {
+  z-index: 2;
+  -webkit-transform: translate(0px, -10px);
+  transform: translate(0, -10px);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  
+}
+
+
+.details {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+  transition: all 20s ease; /* Transition for initial state */
+}
+
+.vehicle-card .details:hover {
+  transition: all 2s ease; /* Transition for hover state */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+}
+
+.vehicle-card .info{
+  margin: 10px;
+}
+.vehicle-card .ctas{
+  margin: 10px 0;
+}
+.thumb-gallery{
+  height: 150px;
+}
+.thumb-gallery img{
+  position: absolute; 
+  width: 240px;
+}
+.thumb-gallery img.first{
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: 150px;
+  margin-bottom: 2em;
+}
+
+/*styling*/
+.stars{
+  margin: 10px 0;
+}
+.star polygon {
+  fill: #E20000;
+}
+.vehicle-card h3{
+  margin-top: 5.6em;
+  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: -.5px;
+}
+.vehicle-card .price span{
+  font-family: "Helvetica", Arial, sans-serif;
+  color: #999;
+  font-size: .75rem;
+}
+.vehicle-card .price h4{
+  margin: 0;
+  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+  color: #222;
+  font-size: 1.25rem;
+}
+.vehicle-card .desc p{
+  color: black;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+.vehicle-card .specs{
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  margin: 20px 0;
+  padding: 10px 0;  
+}
+.specs .spec{
+  display: inline-block;
+  margin-right: 10px;
+}
+.specs span{
+  font-family: "Helvetica", Arial, sans-serif;
+  color: #999;
+  font-size: .75rem;
+}
+.specs p{
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+.specs p span{
+  font-size: .75rem;
+  margin-left: 2px;
+  font-weight: normal;
+}
+.btn{
+  display: block;
+  padding: 0 10px;
+  float: left;
+  font-size: .75rem;
+  font-family: "Helvetica", Arial, sans-serif;
+  text-decoration: none;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  border-radius: 2px;
+  font-weight: bold;  
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+.primary{
+  background-color: #1383b3;
+  color: #fff;
+  margin-right: 10px;
+  line-height: 30px;
+}
+.secondary{
+  background-color: #fff;
+  color: #1383b3;
+  border: 2px solid #1383b3;  
+  line-height: 26px;
+}
+/* Add this CSS to your styles.css or component's CSS file */
+
+.not-available-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.not-available-photo h1 {
+  font-size: 24px;
+  color: #555;
+  margin: 0;
+  padding: 10px;
+}
+
+/* ------ */
+/* @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
 
 
 * {
@@ -71,7 +256,6 @@ body {
 .nav-links {
   font-weight: lighter;
   color: rgb(172, 172, 172);
-  /* background: #333 ; */
 }
 
 .nav-group .nav-item {
@@ -123,7 +307,6 @@ main .container {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  /* background-image:linear-gradient(-20deg, #ff2846 0%, #6944ff 100%);; */
 }
 
 .col-9 {
@@ -131,7 +314,6 @@ main .container {
   margin: 5% auto;
   margin-bottom: -20px;
   display: inline-block;
-  /* background-image:linear-gradient(-20deg, #ff2846 0%, #6944ff 100%);; */
 }
 
 .col-9 .card {
@@ -297,4 +479,4 @@ main .container {
 .not-available-photo h1 {
   border: 1px solid black;
   padding: 30px;
-}
+} */

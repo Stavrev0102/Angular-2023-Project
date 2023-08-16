@@ -18,14 +18,14 @@
         <span>Owner: {{ currentUser.username }}</span>
       </div>
       <div class="image-container">
-        <img src="{{ currentCar.img }}" alt="Animal" class="animal-image" />
+        <img src="{{ currentCar.img }}" alt="Animal" class="car-image" />
         <div *ngIf="isOwner" class="edit-delete-buttons">
           <button class="edit-button" [routerLink]="['/edit-theme', id]">
             Edit
           </button>
           <button
             class="delete-button"
-            (click)="deleteAnimal(currentCar.brand)"
+            (click)="deleteCar(currentCar.brand,currentCar.model)"
           >
             Delete
           </button>

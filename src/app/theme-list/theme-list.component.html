@@ -1,8 +1,45 @@
 
 
+<div *ngIf="isLoading">
+  <app-loader />
+</div>
+<div class="wrapper">
+  <div *ngFor="let car of carsList" class="vehicle-card">
+      <div class="details">
+          <div class="thumb-gallery">
+              <img class="first" [src]="car.img" />
+          </div>
+          <div class="info">
+              <h3>{{car.brand}} {{car.model}}</h3>
+              
+              
+              <div class="ctas">
+                  <a [routerLink]="['/themes/',car.id]" class="btn primary"> Details</a>
+                 
+                  <div style="clear:both;"></div>
+              </div>
+              <div class="desc">
+                  <p>Vehicle Price: {{car.price}} BGN</p>
+              </div>
+              <div class="specs">
+                  <!-- Repeat the following block for each specification -->
+                  <div class="spec mpg">
+                      <span>Specification Label</span>
+                      <p>{{car.engine}}<span></span></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<ng-container *ngIf="carsList.length == 0">
+  <article class="not-available-photo">
+    <h1>No cars yet.</h1>
+  </article>
+</ng-container>
 
 
-<main>
+<!-- <main>
   <div *ngIf="isLoading">
     <app-loader />
   </div>
@@ -47,5 +84,5 @@
       </div>
     </div>
   </div>
-</main>
+</main> -->
 

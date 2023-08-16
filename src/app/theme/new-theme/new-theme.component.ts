@@ -17,11 +17,23 @@ export class NewThemeComponent {
   themeId:any
   brands:string[] = BRANDS
   years:number[] = YEARS;
+  selectedFiles:any = [];
+
+  onFilesSelected(event: any) {
+    this.selectedFiles = event.target.files;
+  const selectedFileUrls = [];
+  for (const file of this.selectedFiles) {
+    const url = URL.createObjectURL(file);
+    selectedFileUrls.push(url);
+  }
+    this.selectedFiles = selectedFileUrls
+  }
 
   createPost(form:NgForm){
    const id = this.userService.getUserId()
    if(form.invalid) return
-    this.apiService.postOffer(form,id).subscribe({
+
+       this.apiService.postOffer(form,id).subscribe({
       next:(res:Car) => {
         this.themeId = res.id;
        this.afDB.database.ref(`users/${id}/posts/${this.themeId}`).set(true); 

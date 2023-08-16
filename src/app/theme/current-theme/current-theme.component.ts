@@ -25,7 +25,7 @@ export class CurrentThemeComponent implements OnInit {
   ) {
     this.themeId = this.route.snapshot.params['themeId']; //other id
 
-    this.commentsRef = this.afDb.list(`/animals/${this.themeId}/comments`);
+    this.commentsRef = this.afDb.list(`/cars/${this.themeId}/comments`);
     this.comments = this.commentsRef.valueChanges()
   }
   currentCar: any = [];
@@ -35,7 +35,7 @@ export class CurrentThemeComponent implements OnInit {
   isOwner: boolean = false;
   id:string = '';
   currentId:any;
-  currentAnimalId:any;
+  currentCarId:any;
   newComment:string = '';
   user:any;
   comments:any = [];
@@ -78,17 +78,17 @@ export class CurrentThemeComponent implements OnInit {
   }
 
 
-  deleteAnimal(name:string): void {
+  deleteCar(brand:string,model:string): void {
     const id: string = this.activatedRoute.snapshot.params["themeId"];
-    if(confirm(`Are you sure to delete ${name}`)) {
-      this.apiService.delAnimal(id).subscribe();
+    if(confirm(`Are you sure to delete ${brand} ${model}`)) {
+      this.apiService.delCar(id).subscribe();
       this.router.navigate(["/"]);
     } 
     return
   }
 
   fetchComments(){
-   this.afDb.list(`/animals/${this.themeId}/comments`)
+   this.afDb.list(`/cars/${this.themeId}/comments`)
     .valueChanges().subscribe((res:any) => {
       this.commentsToShow = res
     });
@@ -97,9 +97,9 @@ export class CurrentThemeComponent implements OnInit {
   sendComment(form:NgForm){
     this.newComment = form.value;
     this.currentId = this.userService.getUserId();// my profile id
-    this.currentAnimalId = this.activatedRoute.snapshot.params["themeId"];
+    this.currentCarId = this.activatedRoute.snapshot.params["themeId"];
     
-    this.apiService.getCar(this.currentAnimalId).subscribe((res) => {
+    this.apiService.getCar(this.currentCarId).subscribe((res) => {
       if(this.newComment !== ''){
         const comment = {
           comments:this.newComment,
