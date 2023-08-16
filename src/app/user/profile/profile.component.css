@@ -169,6 +169,8 @@ a, a:hover {
 .profile-card-social {
   margin-top: 25px;
   display: flex;
+  max-width: 600px;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;

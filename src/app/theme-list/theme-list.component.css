@@ -51,6 +51,11 @@ ul li{
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
   transition: all 20s ease; /* Transition for initial state */
 }
+.loader{
+  text-align: center;
+  margin-top: 3em;
+  font-size: 4em;
+}
 
 .vehicle-card .details:hover {
   transition: all 2s ease; /* Transition for hover state */

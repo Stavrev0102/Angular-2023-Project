@@ -1,6 +1,6 @@
 
 
-<div *ngIf="isLoading">
+<div class="loader" *ngIf="isLoading">
   <app-loader />
 </div>
 <div class="wrapper">
@@ -32,7 +32,7 @@
       </div>
   </div>
 </div>
-<ng-container *ngIf="carsList.length == 0">
+<ng-container *ngIf="carsList.length == 0 && !isLoading">
   <article class="not-available-photo">
     <h1>No cars yet.</h1>
   </article>
