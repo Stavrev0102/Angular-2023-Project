@@ -1,11 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { UserService } from '../user/user.service';
-import { Animal } from '../types/animal';
 import { Subscription } from 'rxjs';
-import { CanActivateFn } from '@angular/router';
 import { Car } from '../types/Car';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-theme-list',
@@ -29,7 +27,6 @@ export class ThemeListComponent implements OnInit, OnDestroy {
   this.carsSubscription =  this.apiService.getAll().subscribe({
     next:((res:Car[]) => {
       this.carsList = res.reverse();
-      console.log(this.carsList);
       this.isLoading = false;  
     })
   });

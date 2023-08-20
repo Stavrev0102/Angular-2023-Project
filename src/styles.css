@@ -35,16 +35,18 @@ app-login{
     height: 100vh;
     
 }
-
+app-theme-list{
+    background-color: rgb(27, 27, 27);
+}
 .wrapper app-footer{
     margin-top: auto;
 }
 app-search{
-  background-image: url('assets/dog-search.png'); 
+  background-image: url('assets/search.jpg'); 
     background-position: top;
 }
 app-new-theme{
-    background-image: url('assets/new-car.jpeg');
+    background-image: url('assets/car.jpg');
     background-position: top;
 }
 app-register{
@@ -55,6 +57,9 @@ app-register{
     justify-content: center;
     align-items: center;
     height: 110vh;
+}
+app-edit-theme{
+    background-image: url('assets/edit.avif');
 }
 
 

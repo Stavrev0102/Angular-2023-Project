@@ -31,11 +31,20 @@
           </button>
         </div>
       </div>
+      <h2 class="name">Brand: {{ currentCar.brand }}</h2>
       <div class="info">
-        <h2 class="name">Brand: {{ currentCar.brand }}</h2>
-        <p class="age">Year: {{ currentCar.year }}</p>
-        <p class="breed">Model: {{currentCar.model }}</p>
+        <div class="left-info">
+          <p class="age">Year: {{ currentCar.year }}</p>
+          <p class="model">Model: {{ currentCar.model }}</p>
+          <p class="fuel">Fuel: {{ currentCar.engine }}</p>
+        </div>
+        <div class="right-info">
+          <p class="location">Location: {{ currentCar.location }}</p>
+          <p class="transmission">Transmission: {{ currentCar.transmission }}</p>
+        </div>
       </div>
+      <h2 class="price">Price: {{ currentCar.price }} BGN</h2>
+      
       <p class="description">
         {{ currentCar.description }}
       </p>

@@ -19,6 +19,7 @@ ul li{
   margin-top: 4em;
   margin-bottom: 4em;
   gap: 7em;
+  color: #930d0d;
 }
 .vehicle-card{
   position: relative;
@@ -26,9 +27,8 @@ ul li{
   height: 350px;
   overflow: visible;
   z-index: 1;
-  border-radius: 2px;
   margin: 0 20px 20px 0;
-  gap:1em
+  gap:1em;
 }
 
 .vehicle-card:hover {
@@ -48,6 +48,7 @@ ul li{
   display: flex;
   flex-direction: column;
   background-color: #fff;
+  border-radius: 10px;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
   transition: all 20s ease; /* Transition for initial state */
 }
@@ -67,6 +68,7 @@ ul li{
 
 .vehicle-card .info{
   margin: 10px;
+  border-radius: 10px;
 }
 .vehicle-card .ctas{
   margin: 10px 0;
@@ -84,6 +86,7 @@ ul li{
   width: 100%;
   height: 150px;
   margin-bottom: 2em;
+  border-radius: 10px;
 }
 
 /*styling*/
