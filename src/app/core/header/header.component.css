@@ -14,10 +14,6 @@ body {
   min-height: 100vh;
 }
 
-.error {
-  color: red;
-}
-
 .navbar {
   display: flex;
   align-items: center;
