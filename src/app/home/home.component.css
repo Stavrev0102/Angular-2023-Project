@@ -1,130 +1,129 @@
-.wrapper {
+.welcome-content {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 4em;
-  margin-bottom: 4em;
-  gap: 7em;
-  color: #930d0d;
+  justify-content: flex-start;
+  height: 500px;
+  border-radius: 50%/ 0 0 40px 40px;
+  width: 100%;
+  background-image: url("https://pikwizard.com/pw/medium/962fb72929ecfe5f9abd498c4d46e1d9.avif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+@media(max-width:500px){
+  .welcome-content-text {
+    font-size: 0.8em;
+    position: absolute;
+  }
+  .welcome-content-image  {
+    width: 400px;
+    justify-content: center;
+    
+  }
 }
 
-.vehicle-card {
-  display: flex;
-  height: 350px;
-  position: relative;
-  margin: 0 20px 20px 0;
-  gap: 1em;
-}
-
-.vehicle-card:hover {
-  transform: translate(0, -10px) scale(1.1);
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-  z-index: 2;
-}
-
-.details {
-  height: 400px;
+.welcome-content-text {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
-  transition: all 20s ease;
-}
-
-.vehicle-card h3 {
-  margin-top: 5.6em;
-  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: -.5px;
-}
-
-.vehicle-card .price span {
-  font-family: "Helvetica", Arial, sans-serif;
-  color: #999;
-  font-size: .75rem;
-}
-
-.vehicle-card .price h4 {
-  margin: 0;
-  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
-  color: #222;
-  font-size: 1.25rem;
-}
-
-.vehicle-card .desc p {
-  color: black;
-  font-size: 1rem;
-  line-height: 1.25rem;
-}
-
-.vehicle-card .specs {
-  border-top: 1px solid #dadada;
-  border-bottom: 1px solid #dadada;
-  margin: 20px 0;
-  padding: 10px 0;
-}
-
-.specs .spec {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.specs span {
-  font-family: "Helvetica", Arial, sans-serif;
-  color: #999;
-  font-size: .75rem;
-}
-
-.specs p {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 0;
-}
-
-.specs p span {
-  font-size: .75rem;
-  margin-left: 2px;
-  font-weight: normal;
-}
-
-.btn {
-  display: block;
-  padding: 0 10px;
-  float: left;
-  font-size: .75rem;
-  font-family: "Helvetica", Arial, sans-serif;
-  text-decoration: none;
-  height: 30px;
-  width: 100px;
-  text-align: center;
-  border-radius: 2px;
-  font-weight: bold;
-  box-sizing: border-box;
-}
-
-.primary {
-  background-color: #1383b3;
-  color: #fff;
-  margin-right: 10px;
-  line-height: 30px;
-}
-
-.not-available-photo {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  height: 300px;
-  background-color: #f7f7f7;
-  border-radius: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  justify-content: center;
+ 
+}
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.title {
+  font-size: 3em;
+  color: wheat;
+}
+.second,
+.third {
+  color: white;
 }
 
-.not-available-photo h1 {
-  font-size: 24px;
-  color: #555;
-  margin: 0;
+h1.bold-welcome {
+  font-weight: 800;
+}
+
+.welcome-content-image {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.sponsors-section {
+  background-color: #f0f0f0;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.moving-bar {
+  display: flex;
+  animation: move 25s linear infinite;
+}
+
+.sponsor-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 10px;
+  margin: 5px;
+  min-width: 150px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #666666;
+  font-size: 30px;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.sponsor-card {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  min-width: 200px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sponsor-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.sponsor-card h3 {
+  font-size: 20px;
+  margin: 0;
+  color: #333333;
+  font-weight: 600;
+}
+
+.link {
+  font-size: 14px;
+  color: #666666;
+}
+
+.sponsor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
