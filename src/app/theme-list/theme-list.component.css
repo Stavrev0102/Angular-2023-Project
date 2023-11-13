@@ -58,13 +58,13 @@ ul li{
   font-size: 4em;
 }
 
-.vehicle-card .details:hover {
-  transition: all 2s ease; /* Transition for hover state */
+/* .vehicle-card .details:hover {
+  transition: all 2s ease; 
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: row;
   width: 300px;
-}
+} */
 
 .vehicle-card .info{
   margin: 10px;

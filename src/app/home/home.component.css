@@ -1,165 +1,130 @@
-.welcome-content {
-    display: flex;
-    justify-content: flex-start;
-    height: 500px;
-    border-radius: 50%/ 0 0 40px 40px;
-    width: 100%;
-    background-image:url("https://pikwizard.com/pw/medium/962fb72929ecfe5f9abd498c4d46e1d9.avif");
-  }
-  
-  .welcome-content-text {
-    display: flex;
-    width: 600px;
-    margin-left: 10%;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    position: relative;
-    left: 50px;
-  }
-  
-  .welcome-content-text h1 {
-    font-size: 60px;
-    margin: 0px;
-    color: white;
-    font-weight: 400;
-  }
-  
-  .welcome-content-text p {
-    color: wheat;
-  }
-  
-  h1.bold-welcome {
-    font-weight: 800;
-  }
-  
-  .welcome-content-image {
-    width: 600px;
-    position: relative;
-    top: 64px;
-    right: 40px;
-  }
-  
-  .welcome-content-image img {
-    width: 100%;
-  }
-  
-  .footer {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .footer .footer-section {
-    position: relative;
-    width: 100%;
-    font-size: 12px;
-    font-family: sans-serif;
-    z-index: -2;
-  }
-  
-  .errorContainer {
-    position: fixed;
-    right: 100px;
-    min-width: 100px;
-    display: block;
-    z-index: 11111;
-    top: 100px;
-    text-align: center;
-    border-radius: 20px;
-    color: rgb(255, 255, 255);
-    height: auto;
-    width: 320px;
-    box-shadow: 0 5px 10px black;
-  }
-  
-  .errorContainer > p {
-    background: gray;
-    font-size: 20px;
-    padding: 20px;
-    height: auto;
-    border-radius: 20px;
-  }
-
-
-/* Add styling for the moving bar */
-
-.sponsors-section {
-  background-color: #f0f0f0;
-  padding: 20px;
-  overflow: hidden; /* Hide the overflowing content */
-}
-
-/* Add styling for the moving bar */
-.moving-bar {
+.wrapper {
   display: flex;
-  animation: move 25s linear infinite; /* Adjust the duration to control the speed of movement */
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4em;
+  margin-bottom: 4em;
+  gap: 7em;
+  color: #930d0d;
 }
 
-/* Add styling for each sponsor card */
-.sponsor-card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 5px;
-  min-width: 150px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-h2{
-  text-align: center;
-  color: #666666;
-  font-size: 30px;
+.vehicle-card {
+  display: flex;
+  height: 350px;
+  position: relative;
+  margin: 0 20px 20px 0;
+  gap: 1em;
 }
 
-/* Define CSS animation for moving the bar */
-@keyframes move {
-  0% {
-      transform: translateX(100%);
-  }
-  100% {
-      transform: translateX(-100%);
-  }
+.vehicle-card:hover {
+  transform: translate(0, -10px) scale(1.1);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 2;
 }
 
-.sponsor-card {
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 10px;
-  min-width: 200px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+.details {
+  height: 400px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+  transition: all 20s ease;
 }
 
-/* Add some fancy styling for the sponsor card content */
-.sponsor-card img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 10px;
+.vehicle-card h3 {
+  margin-top: 5.6em;
+  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: -.5px;
 }
 
-.sponsor-card h3 {
-  font-size: 20px;
+.vehicle-card .price span {
+  font-family: "Helvetica", Arial, sans-serif;
+  color: #999;
+  font-size: .75rem;
+}
+
+.vehicle-card .price h4 {
   margin: 0;
-  color: #333333;
-  font-weight: 600;
+  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+  color: #222;
+  font-size: 1.25rem;
 }
 
-.link {
-  font-size: 14px;
-  color: #666666;
+.vehicle-card .desc p {
+  color: black;
+  font-size: 1rem;
+  line-height: 1.25rem;
 }
 
-/* Hover effect for the sponsor card */
-.sponsor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.vehicle-card .specs {
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  margin: 20px 0;
+  padding: 10px 0;
 }
 
+.specs .spec {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.specs span {
+  font-family: "Helvetica", Arial, sans-serif;
+  color: #999;
+  font-size: .75rem;
+}
+
+.specs p {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.specs p span {
+  font-size: .75rem;
+  margin-left: 2px;
+  font-weight: normal;
+}
+
+.btn {
+  display: block;
+  padding: 0 10px;
+  float: left;
+  font-size: .75rem;
+  font-family: "Helvetica", Arial, sans-serif;
+  text-decoration: none;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  border-radius: 2px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.primary {
+  background-color: #1383b3;
+  color: #fff;
+  margin-right: 10px;
+  line-height: 30px;
+}
+
+.not-available-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.not-available-photo h1 {
+  font-size: 24px;
+  color: #555;
+  margin: 0;
+  padding: 10px;
+}
