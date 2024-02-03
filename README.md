@@ -5,6 +5,9 @@ This is Angular final project.
 3.ng serve 
 4.Open browser on http://localhost:4200/
 5.Deploy version: https://car365.vercel.app/home
+
+Username: Stavrev0102@gmail.com
+Password: 1111111111
   
 Everything in this project is for learning purposes!
 Data Base- Google FireBase Real Time Data Base
